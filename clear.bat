@@ -13,3 +13,7 @@ del/q/s *.manifest.res	/q
 
 del/q/s *.ilk	/q
 del/q/s *.dll	/q
+del/q/s *.exp	/q
+del/q/s *.lib	/q
+
+

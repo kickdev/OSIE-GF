@@ -74,8 +74,7 @@ public:
 	/* 06B0 */ unsigned int _uUnkVal06B0[7];
 	/* 06CC */ wchar_t CharTitle[24];
 	/* 06FC */ unsigned int _uUnkVal06FC[11];
-	/* 0728 */ unsigned int QuestData[25][4];
-	/* 08B8 */ unsigned int _uUnkVal08B8[4];
+	/* 0728 */ unsigned int QuestData[26][4];
 	/* 08C8 */ bool bCharInGame;
 	/* 08C9 */ bool _padding08C9[3];
 	/* 08CC */ unsigned int _uUnkVal08CC[57];
