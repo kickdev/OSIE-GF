@@ -25,7 +25,29 @@
 #define L2CACHE_DEBUG 1
 
 // TODO: reference additional headers your program requires here
+#include "OSIEGFC.h"
 #include "CLog.h"
+
+#include "CMemoryObject.h"
+#include "CIOObject.h"
+
+#include "CItem.h"
+
+#include "CWareHouse.h"
+#include "CUser.h"
+
+#include "CObjectSP.h"
+#include "CUserDb.h"
+
+#include "CIOSocket.h"
+#include "CSocket.h"
+#include "CAdminSocket.h"
+
 //#include "Resource.h"
+
+//blablabla...
+
+extern CLog* g_Log;
+extern CUserDb* g_UserDb;
 
 //

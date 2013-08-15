@@ -121,20 +121,42 @@
     <MASM_x64 Include="GlobalFunctions.asm" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="OSIEGFC.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="..\Shared\Utils.cpp" />
+    <ClCompile Include="CAdminSocket.cpp" />
+    <ClCompile Include="CAdminSocketPacket.cpp" />
+    <ClCompile Include="CIOObject.cpp" />
+    <ClCompile Include="CIOSocket.cpp" />
+    <ClCompile Include="CItem.cpp" />
     <ClCompile Include="CLog.cpp" />
+    <ClCompile Include="CMemoryObject.cpp" />
+    <ClCompile Include="CSocket.cpp" />
+    <ClCompile Include="CUser.cpp" />
+    <ClCompile Include="CUserDb.cpp" />
+    <ClCompile Include="CWareHouse.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="OSIEGFC.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="..\Shared\Enumerations.h" />
     <ClInclude Include="..\Shared\Global.h" />
     <ClInclude Include="..\Shared\Structures.h" />
     <ClInclude Include="..\Shared\Utils.h" />
+    <ClInclude Include="CAdminSocket.h" />
+    <ClInclude Include="CIOObject.h" />
+    <ClInclude Include="CIOSocket.h" />
+    <ClInclude Include="CItem.h" />
     <ClInclude Include="CLog.h" />
+    <ClInclude Include="CMemoryObject.h" />
+    <ClInclude Include="CObjectSP.h" />
+    <ClInclude Include="CSocket.h" />
+    <ClInclude Include="CUser.h" />
+    <ClInclude Include="CUserDb.h" />
+    <ClInclude Include="CWareHouse.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -2,11 +2,13 @@
 //#pragma warning(disable: 4244)
 //#pragma warning(disable: 4267)
 //#pragma warning(disable: 4311)
-//#pragma warning(disable: 4312)
 //#pragma warning(disable: 4800)
 //#pragma warning(disable: 4065)
 //#pragma warning(disable: 4309)
-#pragma warning(disable: 4100)	//LVL4
+#pragma warning(disable: 4100)	//lvl4
+#pragma warning(disable: 4201)	//lvl4
+#pragma warning(disable: 4312)	//lvl3
+#pragma warning(disable: 4706)	//lvl4
 #pragma once
 
 #define WIDEN2(x) L##x

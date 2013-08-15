@@ -6,10 +6,10 @@
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
     <Filter Include="Server Objects">
-      <UniqueIdentifier>{a72547f2-aedc-4201-b7ef-02a92df98f6f}</UniqueIdentifier>
+      <UniqueIdentifier>{d294b97e-7a91-4af1-a4c0-c8c336902299}</UniqueIdentifier>
     </Filter>
     <Filter Include="Utils">
-      <UniqueIdentifier>{62f7b308-d8f5-4141-8aad-6d7072045812}</UniqueIdentifier>
+      <UniqueIdentifier>{20f1c372-3e41-43b2-9bb9-9888ce2fe1b0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

@@ -196,6 +196,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\OSIEGFC.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\OSIEGFC.h"
+				>
+			</File>
+			<File
 				RelativePath=".\stdafx.cpp"
 				>
 				<FileConfiguration
@@ -248,11 +256,91 @@
 			Name="Server Objects"
 			>
 			<File
+				RelativePath=".\CAdminSocket.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\CAdminSocket.h"
+				>
+			</File>
+			<File
+				RelativePath=".\CAdminSocketPacket.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\CIOObject.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\CIOObject.h"
+				>
+			</File>
+			<File
+				RelativePath=".\CIOSocket.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\CIOSocket.h"
+				>
+			</File>
+			<File
+				RelativePath=".\CItem.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\CItem.h"
+				>
+			</File>
+			<File
 				RelativePath=".\CLog.cpp"
 				>
 			</File>
 			<File
 				RelativePath=".\CLog.h"
+				>
+			</File>
+			<File
+				RelativePath=".\CMemoryObject.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\CMemoryObject.h"
+				>
+			</File>
+			<File
+				RelativePath=".\CObjectSP.h"
+				>
+			</File>
+			<File
+				RelativePath=".\CSocket.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\CSocket.h"
+				>
+			</File>
+			<File
+				RelativePath=".\CUser.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\CUser.h"
+				>
+			</File>
+			<File
+				RelativePath=".\CUserDb.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\CUserDb.h"
+				>
+			</File>
+			<File
+				RelativePath=".\CWareHouse.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\CWareHouse.h"
 				>
 			</File>
 		</Filter>

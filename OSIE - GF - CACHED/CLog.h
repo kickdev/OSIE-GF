@@ -3,6 +3,9 @@
 class CLog
 {
 public:
+	CLog() {};
+	~CLog() {};
+
 	enum LogType
 	{
 		black = 0,
@@ -22,4 +25,9 @@ public:
 
 	void AddV(LogType type, const char* format, va_list va);
 	void AddV(LogType type, const wchar_t* format, va_list va);
+
+	static void CallStack(LogType type);
+
+	/* 0000 */ unsigned int _padding2356;
+	/* 0000 */ 
 };
