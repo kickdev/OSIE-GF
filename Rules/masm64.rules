@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VisualStudioToolFile
+	Name="MASM x86-64"
+	Version="8.00"
+	>
+	<Rules>
+		<CustomBuildRule
+			Name="MASM x64"
+			DisplayName="MASM x64"
+			CommandLine="ml64.exe /c /Fo &quot;$(IntDir)\$(InputFileName).obj&quot; /Zi &quot;$(InputPath)&quot;"
+			Outputs="&quot;$(IntDir)\$(InputFileName).obj&quot;"
+			FileExtensions="*.asm"
+			ExecutionDescription="Assembling X86-64 Code..."
+			ShowOnlyRuleProperties="false"
+			>
+			<Properties>
+			</Properties>
+		</CustomBuildRule>
+	</Rules>
+</VisualStudioToolFile>

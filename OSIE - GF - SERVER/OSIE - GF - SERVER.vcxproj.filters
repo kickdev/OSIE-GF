@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Main Files">
+      <UniqueIdentifier>{8710B99E-A106-4b60-AB42-51D18AB70F8A}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Utils">
+      <UniqueIdentifier>{c7b259cd-6de8-48f8-9e59-054a468994f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Server Objects">
+      <UniqueIdentifier>{c4b47357-e937-4b03-b065-7b19e79e3d62}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <MASM_x64 Include="GlobalFunctions.asm">
+      <Filter>Main Files</Filter>
+    </MASM_x64>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Main Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\Utils.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="CLog.cpp">
+      <Filter>Server Objects</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>Main Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\Enumerations.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\Global.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\Structures.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\Utils.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="CLog.h">
+      <Filter>Server Objects</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

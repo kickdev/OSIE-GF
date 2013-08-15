@@ -1,1 +1,1 @@
-Open Source Interlude Extender, based on GF
+Open Source Interlude Extender, based on Gracia Final

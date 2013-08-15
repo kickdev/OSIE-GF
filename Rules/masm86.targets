@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <PropertyPageSchema
+      Include="$(MSBuildThisFileDirectory)$(MSBuildThisFileName).xml" />
+    <AvailableItemName
+      Include="MASM_x86">
+      <Targets>_MASM_x86</Targets>
+    </AvailableItemName>
+  </ItemGroup>
+  <UsingTask
+    TaskName="MASM_x86"
+    TaskFactory="XamlTaskFactory"
+    AssemblyName="Microsoft.Build.Tasks.v4.0">
+    <Task>$(MSBuildThisFileDirectory)$(MSBuildThisFileName).xml</Task>
+  </UsingTask>
+  <Target
+    Name="_MASM_x86"
+    BeforeTargets="$(MASM_x86BeforeTargets)"
+    AfterTargets="$(MASM_x86AfterTargets)"
+    Condition="'@(MASM_x86)' != ''"
+    DependsOnTargets="$(MASM_x86DependsOn);ComputeMASM_x86Output"
+    Outputs="%(MASM_x86.Outputs)"
+    Inputs="%(MASM_x86.Identity);%(MASM_x86.AdditionalDependencies);$(MSBuildProjectFile)">
+    <ItemGroup
+      Condition="'@(SelectedFiles)' != ''">
+      <MASM_x86
+        Remove="@(MASM_x86)"
+        Condition="'%(Identity)' != '@(SelectedFiles)'" />
+    </ItemGroup>
+    <ItemGroup>
+      <MASM_x86_tlog
+        Include="%(MASM_x86.Outputs)"
+        Condition="'%(MASM_x86.Outputs)' != '' and '%(MASM_x86.ExcludedFromBuild)' != 'true'">
+        <Source>@(MASM_x86, '|')</Source>
+      </MASM_x86_tlog>
+    </ItemGroup>
+    <Message
+      Importance="High"
+      Text="%(MASM_x86.ExecutionDescription)" />
+    <WriteLinesToFile
+      Condition="'@(MASM_x86_tlog)' != '' and '%(MASM_x86_tlog.ExcludedFromBuild)' != 'true'"
+      File="$(TLogLocation)$(ProjectName).write.1.tlog"
+      Lines="^%(MASM_x86_tlog.Source);@(MASM_x86_tlog-&gt;'%(Fullpath)')" />
+    <MASM_x86
+      Condition="'@(MASM_x86)' != '' and '%(MASM_x86.ExcludedFromBuild)' != 'true'"
+      CommandLineTemplate="%(MASM_x86.CommandLineTemplate)"
+      AdditionalOptions="%(MASM_x86.AdditionalOptions)"
+      Inputs="%(MASM_x86.Identity)" />
+  </Target>
+  <PropertyGroup>
+    <ComputeLinkInputsTargets>
+            $(ComputeLinkInputsTargets);
+            ComputeMASM_x86Output;
+          </ComputeLinkInputsTargets>
+    <ComputeLibInputsTargets>
+            $(ComputeLibInputsTargets);
+            ComputeMASM_x86Output;
+          </ComputeLibInputsTargets>
+  </PropertyGroup>
+  <Target
+    Name="ComputeMASM_x86Output"
+    Condition="'@(MASM_x86)' != ''">
+    <ItemGroup>
+      <MASM_x86DirsToMake
+        Condition="'@(MASM_x86)' != '' and '%(MASM_x86.ExcludedFromBuild)' != 'true'"
+        Include="%(MASM_x86.Outputs)" />
+      <Link
+        Include="%(MASM_x86DirsToMake.Identity)"
+        Condition="'%(Extension)'=='.obj' or '%(Extension)'=='.res' or '%(Extension)'=='.rsc' or '%(Extension)'=='.lib'" />
+      <Lib
+        Include="%(MASM_x86DirsToMake.Identity)"
+        Condition="'%(Extension)'=='.obj' or '%(Extension)'=='.res' or '%(Extension)'=='.rsc' or '%(Extension)'=='.lib'" />
+      <ImpLib
+        Include="%(MASM_x86DirsToMake.Identity)"
+        Condition="'%(Extension)'=='.obj' or '%(Extension)'=='.res' or '%(Extension)'=='.rsc' or '%(Extension)'=='.lib'" />
+    </ItemGroup>
+    <MakeDir
+      Directories="@(MASM_x86DirsToMake-&gt;'%(RootDir)%(Directory)')" />
+  </Target>
+</Project>

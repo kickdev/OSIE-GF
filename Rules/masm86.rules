@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VisualStudioToolFile
+	Name="MASM x86"
+	Version="8.00"
+	>
+	<Rules>
+		<CustomBuildRule
+			Name="MASM x86"
+			DisplayName="MASM x86"
+			CommandLine="ml.exe /c /nologo /coff /Fo &quot;$(IntDir)\$(InputFileName).obj&quot; /Zi &quot;$(InputPath)&quot;"
+			Outputs="$(IntDir)\$(InputFileName).obj"
+			FileExtensions="*.asm"
+			ExecutionDescription="Assembling X86 Code..."
+			ShowOnlyRuleProperties="false"
+			>
+			<Properties>
+			</Properties>
+		</CustomBuildRule>
+	</Rules>
+</VisualStudioToolFile>

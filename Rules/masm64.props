@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup
+    Condition="'$(MASM_x64BeforeTargets)' == '' and '$(MASM_x64AfterTargets)' == '' and '$(ConfigurationType)' != 'Makefile'">
+    <MASM_x64BeforeTargets>Midl</MASM_x64BeforeTargets>
+    <MASM_x64AfterTargets>CustomBuild</MASM_x64AfterTargets>
+  </PropertyGroup>
+  <PropertyGroup>
+    <MASM_x64DependsOn
+      Condition="'$(ConfigurationType)' != 'Makefile'">_SelectedFiles;$(MASM_x64DependsOn)</MASM_x64DependsOn>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <MASM_x64>
+      <CommandLineTemplate>ml64.exe /c /Fo "$(IntDir)%(Filename)%(Extension).obj" /Zi "%(FullPath)"</CommandLineTemplate>
+      <Outputs>$(IntDir)%(Filename)%(Extension).obj</Outputs>
+      <ExecutionDescription>Assembling X86-64 Code...</ExecutionDescription>
+      <ShowOnlyRuleProperties>false</ShowOnlyRuleProperties>
+    </MASM_x64>
+  </ItemDefinitionGroup>
+</Project>

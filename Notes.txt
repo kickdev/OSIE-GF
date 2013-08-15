@@ -1,0 +1,15 @@
+проект Open Source Interlude Extender - GF Based
+ссылка проекта - http://www.mmocom.ru/showthread.php?t=5976
+ B - Board Ext (Comm x32)
+ C - Cache Ext (x64)
+ S - Server Ext (x64)
+ N - NPC Ext (x64)
+
+про то как использовать Precompiled Header - http://itw66.ru/blog/c_plus_plus/501.html
+
+задуманно аттачить с помощью L2PatchD
+если дойдет дело до привязки и не будет робит, нужно править настройки проектов
+ -> Project -> Configuration Properties -> Linker -> Advanced -> Base Address
+ -> Project -> Configuration Properties -> Linker -> Advanced -> Fixed Base Address - /FIXED
+
+.
