@@ -30,16 +30,39 @@ public:
 	UINT32 GetId() { return this->uCharDbId; };
 	wchar_t* GetCharName() { return this->CharName; };
 
-	/* 0014 */ unsigned int _uUnkVal0014[65];
+	/* 0018 */ unsigned int _uUnkVal0018[64];
 	/* 0118 */ DWORD uDataCreateTickCount;
-	/* 011C */ unsigned int _uUnkVal011C[33];
-	/* 01A0 */ wchar_t CharName[24];
+	/* 011C */ unsigned int _uUnkVal011C[3];
+	/* 0128 */ RWLock user_data_cs;
+	/* 0160 */ unsigned int _uUnkVal0160[16];
+	/* 01A0 */ WCHAR CharName[24];
 	/* 01D0 */ UINT32 uCharDbId;
-	/* 01D4 */ wchar_t CharAccount[24];
-	/* 0204 */ unsigned int _uUnkVal0204[29];
+	/* 01D4 */ WCHAR CharAccount[24];
+	/* 0204 */ UINT32 uAccountDbId;
+	/* 0208 */ UINT32 uPledgeDbId;
+	/* 020C */ UINT32 uBuilderLvL;
+	/* 0210 */ UINT32 uGenderId;
+	/* 0214 */ UINT32 uRaceId;
+	/* 0218 */ UINT32 uClassId;
+	/* 021C */ UINT32 uWorldId;
+	/* 0220 */ INT32 x;
+	/* 0224 */ INT32 y;
+	/* 0228 */ INT32 z;
+	/* 022C */ UINT32 uIsInVehicle;
+	/* 0230 */ DOUBLE fHP;
+	/* 0238 */ DOUBLE fMP;
+	/* 0240 */ DOUBLE fCP;
+	/* 0248 */ DOUBLE fMaxHP;
+	/* 0250 */ DOUBLE fMaxMP;
+	/* 0258 */ DOUBLE fMaxCP;
+	/* 0260 */ UINT32 uSp;
+	/* 0264 */ unsigned int _padding0264;
+	/* 0268 */ UINT64 uExp;
+	/* 0270 */ UINT32 nLevel;
+	/* 0274 */ unsigned int _padding0274;
 	/* 0278 */ __int64 nDropExp;
 	/* 0280 */ unsigned int _uUnkVal0280[4]; union {
-	/* 0290 */ UINT32 UserSlotItemST[26]; struct {
+	/* 0290 */ UINT32 UserSlotItemDbId[26]; struct {
 	/* 0290 */ UINT32 ST_underware;
 	/* 0294 */ UINT32 ST_right_ear;
 	/* 0298 */ UINT32 ST_left_ear;
@@ -66,13 +89,18 @@ public:
 	/* 02EC */ UINT32 ST_deco5;
 	/* 02F0 */ UINT32 ST_deco6;
 	/* 02F4 */ UINT32 ST_belt; }; };
-	/* 02F8 */ unsigned int _uUnkVal02F8[90];
+	/* 02F8 */ unsigned int _uUnkVal02F8[75];
+	/* 0424 */ UINT32 uNameColor;
+	/* 0428 */ UINT32 uTitleColor;
+	/* 042C */ unsigned int _uUnkVal042C[11];
+	/* 0458 */ UINT32 uVitalityCount;
+	/* 045C */ unsigned int _uUnkVal045C;
 	/* 0460 */ SYSTEMTIME logout_date;
 	/* 0470 */ SYSTEMTIME login_date;
 	/* 0480 */ SYSTEMTIME create_date;
 	/* 0490 */ unsigned int AbnormalData[34][4];
 	/* 06B0 */ unsigned int _uUnkVal06B0[7];
-	/* 06CC */ wchar_t CharTitle[24];
+	/* 06CC */ WCHAR CharTitle[24];
 	/* 06FC */ unsigned int _uUnkVal06FC[11];
 	/* 0728 */ unsigned int QuestData[26][4];
 	/* 08C8 */ bool bCharInGame;
@@ -84,6 +112,6 @@ public:
 #pragma pack(pop)
 
 CompileTimeOffsetCheck(CUser, uDataCreateTickCount, 0x118);
-CompileTimeOffsetCheck(CUser, UserSlotItemST, 0x290);
+CompileTimeOffsetCheck(CUser, UserSlotItemDbId, 0x290);
 CompileTimeOffsetCheck(CUser, AbnormalData, 0x490);
 CompileTimeSizeCheck(CUser, 0x9B0);

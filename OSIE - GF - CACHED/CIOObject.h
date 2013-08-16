@@ -16,9 +16,9 @@ public:
 	/* 048 */ virtual __int64 _vfunc048() { return NULL; };
 	/* 050 */ 
 
-	/* 0014 */ 
+	/* 0018 */ 
 };
 
 #pragma pack(pop)
 
-CompileTimeSizeCheck(CIOObject, 0x14);
+CompileTimeSizeCheck(CIOObject, 0x18);

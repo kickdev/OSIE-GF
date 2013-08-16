@@ -32,7 +32,7 @@
 
 bool __cdecl MoveItem2Packet(CAdminSocket* pAdminSocket, unsigned char* packet)
 {
-	Guard(__WFUNCTION__);
+	Guard(__WFUNCSIG__);
 	bool bTransactResult;
 	CItemAttributeData LogAttributeData;
 	wchar_t pAdminName[256] = {0}, pItemAttrLogData[256], pItemLogData[256];
@@ -46,7 +46,7 @@ bool __cdecl MoveItem2Packet(CAdminSocket* pAdminSocket, unsigned char* packet)
 		g_UserDb->GetUser(&ReceiverCharSP, uReceiverCharDbId, true);
 		if(SenderCharSP.pUser && ReceiverCharSP.pUser)
 		{
-			if(SenderCharSP.pUser->bCharInGame || ReceiverCharSP.pUser->bCharInGame)
+			if(!SenderCharSP.pUser->bCharInGame && !ReceiverCharSP.pUser->bCharInGame)
 			{
 				if((uItemWareHouseSourceType = SenderCharSP.pUser->GetItemWare(uTransferItemDbId)) < 2)
 				{
@@ -93,11 +93,13 @@ bool __cdecl MoveItem2Packet(CAdminSocket* pAdminSocket, unsigned char* packet)
 							pAdminSocket->SendSuccess(0x28);
 
 							g_Log->Add(CLog::file_in, L"%I64d,%I64d,%I64d,,,,,,%s,%s,%s,%I64d,%I64d,%I64d,%I64d,,,,,,,%s,%s,,,%I64d", 
-								(__int64)640, (__int64)0, (__int64)0, 
+								(UINT64)640, (UINT64)0, (UINT64)0, 
 								SenderCharSP.pUser->GetCharName(), ReceiverCharSP.pUser->GetCharName(), pItemLogData, 
-								(__int64)SenderCharSP.pUser->GetId(), (__int64)ReceiverCharSP.pUser->GetId(), (__int64)uItemTypeId, (__int64)0, 
+								(UINT64)SenderCharSP.pUser->GetId(), (UINT64)ReceiverCharSP.pUser->GetId(), (UINT64)uItemTypeId, (UINT64)0, 
 								pAdminName, pAdminName, 
-								(__int64)uTransferItemDbId);
+								(UINT64)uTransferItemDbId);
+
+							//08/16/2013 09:17:16.031, 640,0,0,,,,,,Admin,Noob,0:0:0:-2:0:0:0:0:0:0:0:0,1,2,6608,0,,,,,,,ÂåáÀäì³í,ÂåáÀäì³í,,,18
 						}
 						else
 							pAdminSocket->SendError(0x28, GLOBAL_ERROR);
@@ -153,11 +155,13 @@ ReturnBlock1:
 							pAdminSocket->SendSuccess(0x28);
 
 							g_Log->Add(CLog::file_in, L"%I64d,%I64d,%I64d,,,,,,%s,%s,%s,%I64d,%I64d,%I64d,%I64d,,,,,,,%s,%s,,,%I64d", 
-								(__int64)640, (__int64)0, (__int64)0, 
+								(UINT64)640, (UINT64)0, (UINT64)0, 
 								SenderCharSP.pUser->GetCharName(), ReceiverCharSP.pUser->GetCharName(), pItemLogData, 
-								(__int64)SenderCharSP.pUser->GetId(), (__int64)ReceiverCharSP.pUser->GetId(), (__int64)uItemTypeId, (__int64)0, 
+								(UINT64)SenderCharSP.pUser->GetId(), (UINT64)ReceiverCharSP.pUser->GetId(), (UINT64)uItemTypeId, (UINT64)0, 
 								pAdminName, pAdminName, 
-								(__int64)uTransferItemDbId);
+								(UINT64)uTransferItemDbId);
+
+							//08/16/2013 09:17:16.031, 640,0,0,,,,,,Admin,Noob,0:0:0:-2:0:0:0:0:0:0:0:0,1,2,6608,0,,,,,,,ÂåáÀäì³í,ÂåáÀäì³í,,,18
 						}
 						else
 							pAdminSocket->SendError(0x28, GLOBAL_ERROR);

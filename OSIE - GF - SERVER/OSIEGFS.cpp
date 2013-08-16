@@ -1,8 +1,7 @@
 #include "stdafx.h"
 
 extern HANDLE g_Server;
-CLog* g_Log = (CLog*)0x01962620;
-CUserDb* g_UserDb = (CUserDb*)0x0273A1D0;
+CLog* g_Log = (CLog*)0x0913EDD0;
 
 void DllInitializer(HMODULE hDllModule, DWORD ul_reason_for_call)
 {
@@ -12,12 +11,10 @@ void DllInitializer(HMODULE hDllModule, DWORD ul_reason_for_call)
 	{
 		if(((UINT64)hDllModule) < 0x7E000000 && ((UINT64)(&g_Server)) < 0x7F000000)
 		{
-			if(*((UINT64*)0x401000) == 0x48001E9D09058D48)
+			if(*((UINT64*)0x401000) == 0xC6006406C1058D48)
 			{
 				if((g_Server = OpenProcess(PROCESS_ALL_ACCESS | PROCESS_VM_READ | PROCESS_VM_WRITE, FALSE, GetCurrentProcessId())))
 				{
-					//AdminPacket - MoveItem2Packet fix: cached crash if item not finded by dbid
-					WriteMemoryQWORD(0x6A3320, (UINT64)MoveItem2Packet);
 
 //					Msg(L"Load", L"[%s]\n complete loaded", __WFILE__);
 
@@ -78,7 +75,7 @@ unsigned char* Disassemble(unsigned char* buf, const char* format, ...)
 	va_list va;
 	va_start(va, format);
 	typedef unsigned char* (__cdecl *t)(unsigned char*, const char*, va_list);
-	t f = (t)0x004737A4;
+	t f = (t)0x0068EA18;
 	unsigned char* pReturn = f(buf, format, va);
 	va_end(va);
 	UnGuard();

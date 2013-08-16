@@ -18,7 +18,7 @@ public:
 	/* 088 */ virtual __int64 _vfunc088() { return NULL; };
 	/* 090 */ 
 
-	/* 0014 */ unsigned int _uUnkVal0014[39];
+	/* 0018 */ unsigned int _uUnkVal0018[38];
 	/* 00B0 */ 
 };
 

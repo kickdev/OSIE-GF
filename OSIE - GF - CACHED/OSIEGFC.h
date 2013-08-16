@@ -1,11 +1,5 @@
 #pragma once
 
-void WriteMemoryBYTES(UINT32 uAddress, LPVOID bytes, UINT32 len);
-void WriteMemoryQWORD(UINT32 uAddress, QWORD value);
-void WriteMemoryDWORD(UINT32 uAddress, DWORD value);
-void WriteMemoryWORD(UINT32 uAddress, WORD value);
-void WriteMemoryBYTE(UINT32 uAddress, BYTE value);
-
 unsigned char* Disassemble(unsigned char* buf, const char* format, ...);
 
 __forceinline void Guard(const wchar_t* pFuncName)

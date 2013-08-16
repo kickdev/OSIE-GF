@@ -308,6 +308,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\CObjectSP.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\CObjectSP.h"
 				>
 			</File>
@@ -341,6 +345,14 @@
 			</File>
 			<File
 				RelativePath=".\CWareHouse.h"
+				>
+			</File>
+			<File
+				RelativePath=".\RWLock.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\RWLock.h"
 				>
 			</File>
 		</Filter>

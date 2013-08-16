@@ -23,9 +23,17 @@
 #include "../Shared/Global.h"
 
 #define L2CACHE_DEBUG 1
+//#define IS_VS2005_RELEASE 1
+#define VS2005_RELEASE_MAP_SIZE 24
+
+//#define APP_VECTOR_LEN sizeof(std::vector)
+//#define APP_STRING_LEN sizeof(std::string)
 
 // TODO: reference additional headers your program requires here
 #include "OSIEGFC.h"
+
+#include "RWLock.h"
+
 #include "CLog.h"
 
 #include "CMemoryObject.h"

@@ -121,6 +121,7 @@
     <MASM_x64 Include="GlobalFunctions.asm" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="OSIEGFN.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
@@ -129,6 +130,7 @@
     <ClCompile Include="CLog.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="OSIEGFN.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="..\Shared\Enumerations.h" />
     <ClInclude Include="..\Shared\Global.h" />

@@ -45,3 +45,10 @@ void CLog::AddV(LogType type, const wchar_t* format, va_list va)
 	t f = (t)0x006B92AC;
 	f(this, type, format, va);
 }
+
+void CLog::CallStack(LogType type)
+{
+	typedef void (*t)(LogType);
+	t f = (t)0x0061B824;
+	f(type);
+}

@@ -34,10 +34,21 @@ void CLog::Add(LogType type, const wchar_t* format, ...)
 
 void CLog::AddV(LogType type, const char* format, va_list va)
 {
-	//
+	typedef void (__thiscall *t)(CLog*, LogType, const char*, va_list);
+	t f = (t)0x0040E980;
+	f(this, type, format, va);
 }
 
 void CLog::AddV(LogType type, const wchar_t* format, va_list va)
 {
-	//
+	typedef void (__thiscall *t)(CLog*, LogType, const wchar_t*, va_list);
+	t f = (t)0x0040F1D0;
+	f(this, type, format, va);
+}
+
+void CLog::CallStack(LogType type)
+{
+	typedef void (*t)(LogType);
+	t f = (t)0x00407A70;
+	f(type);
 }

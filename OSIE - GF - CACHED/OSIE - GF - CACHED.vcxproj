@@ -134,10 +134,12 @@
     <ClCompile Include="CItem.cpp" />
     <ClCompile Include="CLog.cpp" />
     <ClCompile Include="CMemoryObject.cpp" />
+    <ClCompile Include="CObjectSP.cpp" />
     <ClCompile Include="CSocket.cpp" />
     <ClCompile Include="CUser.cpp" />
     <ClCompile Include="CUserDb.cpp" />
     <ClCompile Include="CWareHouse.cpp" />
+    <ClCompile Include="RWLock.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="OSIEGFC.h" />
@@ -157,6 +159,7 @@
     <ClInclude Include="CUser.h" />
     <ClInclude Include="CUserDb.h" />
     <ClInclude Include="CWareHouse.h" />
+    <ClInclude Include="RWLock.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

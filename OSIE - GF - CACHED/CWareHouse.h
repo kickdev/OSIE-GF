@@ -1,5 +1,11 @@
 #pragma once
 
+#pragma pack(push, 1)
+
+#define WAREHOUSE_TYPE_INVENTORY 0
+#define WAREHOUSE_TYPE_WAREHOUSE 1	//?
+#define WAREHOUSE_TYPE_CLAN 1001	//?
+
 class CWareHouse : public CMemoryObject
 {
 public:
@@ -19,8 +25,10 @@ public:
 		return f(this, uItemDbId, pReceiverWareHouse);
 	};
 
-	/* 0014 */ unsigned int _uUnkVal0014[41];
+	/* 0018 */ unsigned int _uUnkVal0018[40];
 	/* 00B8 */ 
 };
+
+#pragma pack(pop)
 
 CompileTimeSizeCheck(CWareHouse, 0xB8);

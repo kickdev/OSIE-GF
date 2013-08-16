@@ -197,6 +197,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\OSIEGFB.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\OSIEGFB.h"
+				>
+			</File>
+			<File
 				RelativePath=".\stdafx.cpp"
 				>
 				<FileConfiguration

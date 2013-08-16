@@ -25,7 +25,10 @@
 #define L2SERVER_DEBUG 1
 
 // TODO: reference additional headers your program requires here
+#include "OSIEGFS.h"
+
 #include "CLog.h"
+
 //#include "Resource.h"
 
 //

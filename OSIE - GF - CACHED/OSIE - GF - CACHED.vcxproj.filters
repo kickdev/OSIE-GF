@@ -6,10 +6,10 @@
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
     <Filter Include="Utils">
-      <UniqueIdentifier>{27c78a78-dd5e-49f8-b1b3-fd5fc903e93b}</UniqueIdentifier>
+      <UniqueIdentifier>{b9d8004b-5970-4594-bdbf-54b4c5635f8a}</UniqueIdentifier>
     </Filter>
     <Filter Include="Server Objects">
-      <UniqueIdentifier>{0575f804-976f-4253-897e-ea37841bd6b7}</UniqueIdentifier>
+      <UniqueIdentifier>{5a8bc50a-c14a-47a0-996f-cf4cf0721d1a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -48,6 +48,9 @@
     <ClCompile Include="CMemoryObject.cpp">
       <Filter>Server Objects</Filter>
     </ClCompile>
+    <ClCompile Include="CObjectSP.cpp">
+      <Filter>Server Objects</Filter>
+    </ClCompile>
     <ClCompile Include="CSocket.cpp">
       <Filter>Server Objects</Filter>
     </ClCompile>
@@ -58,6 +61,9 @@
       <Filter>Server Objects</Filter>
     </ClCompile>
     <ClCompile Include="CWareHouse.cpp">
+      <Filter>Server Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="RWLock.cpp">
       <Filter>Server Objects</Filter>
     </ClCompile>
   </ItemGroup>
@@ -111,6 +117,9 @@
       <Filter>Server Objects</Filter>
     </ClInclude>
     <ClInclude Include="CWareHouse.h">
+      <Filter>Server Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="RWLock.h">
       <Filter>Server Objects</Filter>
     </ClInclude>
   </ItemGroup>

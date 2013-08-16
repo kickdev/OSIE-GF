@@ -1,5 +1,7 @@
 #pragma once
 
+#pragma pack(push, 1)
+
 class CLog
 {
 public:
@@ -31,3 +33,5 @@ public:
 	/* 0000 */ unsigned int _padding2356;
 	/* 0000 */ 
 };
+
+#pragma pack(pop)

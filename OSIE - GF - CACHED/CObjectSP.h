@@ -6,7 +6,13 @@ class CObjectSP
 {
 public:
 	CObjectSP() {};
-	~CObjectSP() {};
+	~CObjectSP();
+
+
+
+#ifdef L2CACHE_DEBUG
+#endif //L2CACHE_DEBUG
+
 
 	__forceinline void Release()
 	{
@@ -24,8 +30,10 @@ public:
 		CWareHouse* pWareHouse;
 		CItem* pItem;
 	};
-	/* 0000 */ UINT32 uReleaseType;
-	/* 0000 */ 
+	/* 0008 */ UINT32 uReleaseType;
+	/* 000C */ 
 };
 
 #pragma pack(pop)
+
+CompileTimeSizeCheck(CObjectSP, 0x0C);

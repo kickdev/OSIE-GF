@@ -6,10 +6,10 @@
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
     <Filter Include="Server Objects">
-      <UniqueIdentifier>{1af05739-074a-45ec-bcc5-09538e08fdbf}</UniqueIdentifier>
+      <UniqueIdentifier>{3e3ec5f5-ae25-43d4-82b6-fb747c7d8a57}</UniqueIdentifier>
     </Filter>
     <Filter Include="Utils">
-      <UniqueIdentifier>{f78bdc31-7a38-4f9c-b545-a4ced723806e}</UniqueIdentifier>
+      <UniqueIdentifier>{d3a7baae-10f1-49a5-976d-c9c417b6f767}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -18,6 +18,9 @@
     </MASM_x86>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="OSIEGFB.cpp">
+      <Filter>Main Files</Filter>
+    </ClCompile>
     <ClCompile Include="stdafx.cpp">
       <Filter>Main Files</Filter>
     </ClCompile>
@@ -29,6 +32,9 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="OSIEGFB.h">
+      <Filter>Main Files</Filter>
+    </ClInclude>
     <ClInclude Include="stdafx.h">
       <Filter>Main Files</Filter>
     </ClInclude>

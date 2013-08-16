@@ -24,7 +24,7 @@ public:
 	/* 000A */ UINT16 uDefAttrEarth;
 	/* 000C */ UINT16 uDefAttrHoly;
 	/* 000E */ UINT16 uDefAttrUnholy; }; };
-	/* 0010 */ UINT16 uDefEnch[3];
+	/* 0010 */ UINT16 uDefEnch[3]; //last 2 unused in gf ?
 	/* 0016 */ 
 };
 
@@ -42,10 +42,8 @@ public:
 		typedef CObjectSP* (*t)(CObjectSP*, UINT32);
 		t f = (t)0x0047926C;
 		return f(pObjectSP, nItemDbId);
-		//
 	};
 
-	/* 0014 */ unsigned int uUnk0014; //???
 	/* 0018 */ UINT32 uTransactMode;
 	/* 001C */ UINT32 uItemDbId;
 	/* 0020 */ UINT32 uItemOwnerID;

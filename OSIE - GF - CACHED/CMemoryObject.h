@@ -16,7 +16,10 @@ public:
 	/* 0008 */ long nRefCount;
 	/* 000C */ long nInTimer;
 	/* 0010 */ long nIdentityId;
-	/* 0014 */ 
+	/* 0014 */ long _padding0014;
+	/* 0018 */ 
 };
 
 #pragma pack(pop)
+
+CompileTimeSizeCheck(CMemoryObject, 0x18);
