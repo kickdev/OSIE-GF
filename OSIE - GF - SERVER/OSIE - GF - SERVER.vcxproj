@@ -122,26 +122,55 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Shared\IniFile.cpp" />
-    <ClCompile Include="..\Shared\MemoryTools.cpp" />
     <ClCompile Include="OSIEGFS.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="..\Shared\Utils.cpp" />
+    <ClCompile Include="CCreature.cpp" />
+    <ClCompile Include="CIOObject.cpp" />
+    <ClCompile Include="CIOSocket.cpp" />
+    <ClCompile Include="CIOSocket8.cpp" />
     <ClCompile Include="CLog.cpp" />
+    <ClCompile Include="CMemoryObject.cpp" />
+    <ClCompile Include="CObject.cpp" />
+    <ClCompile Include="CObjectSP.cpp" />
+    <ClCompile Include="CSharedCreatureData.cpp" />
+    <ClCompile Include="CSocket.cpp" />
+    <ClCompile Include="CTrade.cpp" />
+    <ClCompile Include="CTradeManager.cpp" />
+    <ClCompile Include="CUser.cpp" />
+    <ClCompile Include="CUserExt.cpp" />
+    <ClCompile Include="CUserSocket.cpp" />
+    <ClCompile Include="CUserSocket_PacketHandler.cpp" />
+    <ClCompile Include="CUserSocketExt.cpp" />
+    <ClCompile Include="CWorldObject.cpp" />
     <ClCompile Include="Vars.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Shared\IniFile.h" />
-    <ClInclude Include="..\Shared\MemoryTools.h" />
     <ClInclude Include="OSIEGFS.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="..\Shared\Enumerations.h" />
     <ClInclude Include="..\Shared\Global.h" />
     <ClInclude Include="..\Shared\Structures.h" />
     <ClInclude Include="..\Shared\Utils.h" />
+    <ClInclude Include="CCreature.h" />
+    <ClInclude Include="CIOObject.h" />
+    <ClInclude Include="CIOSocket.h" />
+    <ClInclude Include="CIOSocket8.h" />
     <ClInclude Include="CLog.h" />
+    <ClInclude Include="CMemoryObject.h" />
+    <ClInclude Include="CObject.h" />
+    <ClInclude Include="CObjectSP.h" />
+    <ClInclude Include="CSharedCreatureData.h" />
+    <ClInclude Include="CSocket.h" />
+    <ClInclude Include="CTrade.h" />
+    <ClInclude Include="CTradeManager.h" />
+    <ClInclude Include="CUser.h" />
+    <ClInclude Include="CUserSocket.h" />
+    <ClInclude Include="CWorldObject.h" />
     <ClInclude Include="Vars.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

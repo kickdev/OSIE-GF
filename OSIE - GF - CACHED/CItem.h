@@ -76,4 +76,4 @@ public:
 
 #pragma pack(pop)
 
-CompileTimeSizeCheck(CItem, 0x98);
+CompileTimeSizeCheck(CItem, 0x0098);

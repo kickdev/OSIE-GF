@@ -20,9 +20,8 @@ public:
 	/* 0000 */ union
 	{
 		CMemoryObject* pMemoryObject;
+		CTrade* pTrade;
 		CUser* pUser;
-		CWareHouse* pWareHouse;
-		CItem* pItem;
 	};
 	/* 0008 */ UINT32 uReleaseType;
 	/* 000C */ 

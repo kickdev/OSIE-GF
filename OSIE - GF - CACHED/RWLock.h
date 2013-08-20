@@ -42,4 +42,4 @@ public:
 
 #pragma pack(pop)
 
-CompileTimeSizeCheck(RWLock, 0x38);
+CompileTimeSizeCheck(RWLock, 0x0038);

@@ -18,6 +18,6 @@ public:
 
 #pragma pack(pop)
 
-CompileTimeSizeCheck(CAdminSocket, 0x1A8);
+CompileTimeSizeCheck(CAdminSocket, 0x01A8);
 
 bool __cdecl MoveItem2Packet(CAdminSocket* pAdminSocket, unsigned char* packet);

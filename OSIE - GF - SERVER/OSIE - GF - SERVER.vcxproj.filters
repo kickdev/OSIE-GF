@@ -6,10 +6,10 @@
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
     <Filter Include="Utils">
-      <UniqueIdentifier>{6c615bec-931f-459e-b264-3b91b4450244}</UniqueIdentifier>
+      <UniqueIdentifier>{d389bdf8-ff5d-42c7-86f6-c0d4008094a9}</UniqueIdentifier>
     </Filter>
     <Filter Include="Server Objects">
-      <UniqueIdentifier>{d6f2451e-8783-45ca-ae43-8075b0b83dec}</UniqueIdentifier>
+      <UniqueIdentifier>{498563ec-ac22-4e11-91fd-7a2b6079366f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -27,13 +27,61 @@
     <ClCompile Include="..\Shared\Utils.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
+    <ClCompile Include="CCreature.cpp">
+      <Filter>Server Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="CIOObject.cpp">
+      <Filter>Server Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="CIOSocket.cpp">
+      <Filter>Server Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="CIOSocket8.cpp">
+      <Filter>Server Objects</Filter>
+    </ClCompile>
     <ClCompile Include="CLog.cpp">
       <Filter>Server Objects</Filter>
     </ClCompile>
-    <ClCompile Include="..\Shared\IniFile.cpp">
-      <Filter>Utils</Filter>
+    <ClCompile Include="CMemoryObject.cpp">
+      <Filter>Server Objects</Filter>
     </ClCompile>
-    <ClCompile Include="..\Shared\MemoryTools.cpp">
+    <ClCompile Include="CObject.cpp">
+      <Filter>Server Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="CObjectSP.cpp">
+      <Filter>Server Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="CSharedCreatureData.cpp">
+      <Filter>Server Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="CSocket.cpp">
+      <Filter>Server Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="CTrade.cpp">
+      <Filter>Server Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="CTradeManager.cpp">
+      <Filter>Server Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="CUser.cpp">
+      <Filter>Server Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="CUserExt.cpp">
+      <Filter>Server Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="CUserSocket.cpp">
+      <Filter>Server Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="CUserSocket_PacketHandler.cpp">
+      <Filter>Server Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="CUserSocketExt.cpp">
+      <Filter>Server Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="CWorldObject.cpp">
+      <Filter>Server Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\IniFile.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
     <ClCompile Include="Vars.cpp">
@@ -59,13 +107,52 @@
     <ClInclude Include="..\Shared\Utils.h">
       <Filter>Utils</Filter>
     </ClInclude>
+    <ClInclude Include="CCreature.h">
+      <Filter>Server Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="CIOObject.h">
+      <Filter>Server Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="CIOSocket.h">
+      <Filter>Server Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="CIOSocket8.h">
+      <Filter>Server Objects</Filter>
+    </ClInclude>
     <ClInclude Include="CLog.h">
       <Filter>Server Objects</Filter>
     </ClInclude>
-    <ClInclude Include="..\Shared\IniFile.h">
-      <Filter>Utils</Filter>
+    <ClInclude Include="CMemoryObject.h">
+      <Filter>Server Objects</Filter>
     </ClInclude>
-    <ClInclude Include="..\Shared\MemoryTools.h">
+    <ClInclude Include="CObject.h">
+      <Filter>Server Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="CObjectSP.h">
+      <Filter>Server Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="CSharedCreatureData.h">
+      <Filter>Server Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="CSocket.h">
+      <Filter>Server Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="CTrade.h">
+      <Filter>Server Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="CTradeManager.h">
+      <Filter>Server Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="CUser.h">
+      <Filter>Server Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="CUserSocket.h">
+      <Filter>Server Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="CWorldObject.h">
+      <Filter>Server Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\IniFile.h">
       <Filter>Utils</Filter>
     </ClInclude>
     <ClInclude Include="Vars.h">

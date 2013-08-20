@@ -17,4 +17,4 @@ public:
 
 #pragma pack(pop)
 
-CompileTimeSizeCheck(CSocket, 0x1A0);
+CompileTimeSizeCheck(CSocket, 0x01A0);

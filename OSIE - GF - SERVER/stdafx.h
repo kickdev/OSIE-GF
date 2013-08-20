@@ -23,13 +23,43 @@
 #include "../Shared/Global.h"
 
 #define L2SERVER_DEBUG 1
+//#define IS_VS2005_RELEASE 1
+#define VS2005_RELEASE_VECTOR_SIZE 32
+#define L2SERVER_USE_DELAY_SYSTEM 1
+//#define L2SERVER_USE_DELAY_KICK 1
+#define L2SERVER_SEND_DELAY_MSG 1
+#define L2SERVER_DEBUG_PACKET_DELAY 1
 
 // TODO: reference additional headers your program requires here
 #include "OSIEGFS.h"
 
 #include "CLog.h"
-#include "Vars.h"
+
+#include "CMemoryObject.h"
+#include "CIOObject.h"
+
+#include "CTrade.h"
+#include "CObjectSP.h"
+#include "CTradeManager.h"
+
+#include "CIOSocket.h"
+#include "CSocket.h"
+#include "CUserSocket.h"
+
+#include "CObject.h"
+#include "CWorldObject.h"
+#include "CSharedCreatureData.h"
+#include "CCreature.h"
+#include "CUser.h"
 
 //#include "Resource.h"
 
+#include "Vars.h"
+
+//blablabla...
+
+extern CLog* g_Log;
+extern CTradeManager* g_TradeManager;
+
 //
+extern CVars g_Vars; // global params

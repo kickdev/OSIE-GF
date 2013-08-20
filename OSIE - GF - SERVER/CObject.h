@@ -1,0 +1,153 @@
+#pragma once
+
+#pragma pack(push, 1)
+
+class CObject : public CIOObject
+{
+public:
+	CObject() {};
+	~CObject() {};
+
+	/* 050 */ virtual __int64 _vfunc050() { return NULL; };
+	/* 058 */ virtual __int64 _vfunc058() { return NULL; };
+	/* 060 */ virtual __int64 _vfunc060() { return NULL; };
+	/* 068 */ virtual __int64 _vfunc068() { return NULL; };
+	/* 070 */ virtual __int64 _vfunc070() { return NULL; };
+	/* 078 */ virtual __int64 _vfunc078() { return NULL; };
+	/* 080 */ virtual __int64 _vfunc080() { return NULL; };
+	/* 088 */ virtual __int64 _vfunc088() { return NULL; };
+	/* 090 */ virtual __int64 _vfunc090() { return NULL; };
+	/* 098 */ virtual __int64 _vfunc098() { return NULL; };
+	/* 0A0 */ virtual __int64 _vfunc0A0() { return NULL; };
+	/* 0A8 */ virtual __int64 _vfunc0A8() { return NULL; };
+	/* 0B0 */ virtual __int64 _vfunc0B0() { return NULL; };
+	/* 0B8 */ virtual __int64 _vfunc0B8() { return NULL; };
+	/* 0C0 */ virtual __int64 _vfunc0C0() { return NULL; };
+	/* 0C8 */ virtual __int64 _vfunc0C8() { return NULL; };
+	/* 0D0 */ virtual __int64 _vfunc0D0() { return NULL; };
+	/* 0D8 */ virtual __int64 _vfunc0D8() { return NULL; };
+	/* 0E0 */ virtual __int64 _vfunc0E0() { return NULL; };
+	/* 0E8 */ virtual __int64 _vfunc0E8() { return NULL; };
+	/* 0F0 */ virtual __int64 _vfunc0F0() { return NULL; };
+	/* 0F8 */ virtual __int64 _vfunc0F8() { return NULL; };
+	/* 100 */ virtual __int64 _vfunc100() { return NULL; };
+	/* 108 */ virtual __int64 _vfunc108() { return NULL; };
+	/* 110 */ virtual __int64 _vfunc110() { return NULL; };
+	/* 118 */ virtual __int64 _vfunc118() { return NULL; };
+	/* 120 */ virtual __int64 _vfunc120() { return NULL; };
+	/* 128 */ virtual __int64 _vfunc128() { return NULL; };
+	/* 130 */ virtual __int64 _vfunc130() { return NULL; };
+	/* 138 */ virtual __int64 _vfunc138() { return NULL; };
+	/* 140 */ virtual __int64 _vfunc140() { return NULL; };
+	/* 148 */ virtual __int64 _vfunc148() { return NULL; };
+	/* 150 */ virtual __int64 _vfunc150() { return NULL; };
+	/* 158 */ virtual __int64 _vfunc158() { return NULL; };
+	/* 160 */ virtual __int64 _vfunc160() { return NULL; };
+	/* 168 */ virtual __int64 _vfunc168() { return NULL; };
+	/* 170 */ virtual __int64 _vfunc170() { return NULL; };
+	/* 178 */ virtual __int64 _vfunc178() { return NULL; };
+	/* 180 */ virtual __int64 _vfunc180() { return NULL; };
+	/* 188 */ virtual __int64 _vfunc188() { return NULL; };
+	/* 190 */ virtual __int64 _vfunc190() { return NULL; };
+	/* 198 */ virtual __int64 _vfunc198() { return NULL; };
+	/* 1A0 */ virtual __int64 _vfunc1A0() { return NULL; };
+	/* 1A8 */ virtual __int64 _vfunc1A8() { return NULL; };
+	/* 1B0 */ virtual __int64 _vfunc1B0() { return NULL; };
+	/* 1B8 */ virtual __int64 _vfunc1B8() { return NULL; };
+	/* 1C0 */ virtual __int64 _vfunc1C0() { return NULL; };
+	/* 1C8 */ virtual __int64 _vfunc1C8() { return NULL; };
+	/* 1D0 */ virtual __int64 _vfunc1D0() { return NULL; };
+	/* 1D8 */ virtual __int64 _vfunc1D8() { return NULL; };
+	/* 1E0 */ virtual __int64 _vfunc1E0() { return NULL; };
+	/* 1E8 */ virtual __int64 _vfunc1E8() { return NULL; };
+	/* 1F0 */ virtual __int64 _vfunc1F0() { return NULL; };
+	/* 1F8 */ virtual __int64 _vfunc1F8() { return NULL; };
+	/* 200 */ virtual __int64 _vfunc200() { return NULL; };
+	/* 208 */ virtual __int64 _vfunc208() { return NULL; };
+	/* 210 */ virtual __int64 _vfunc210() { return NULL; };
+	/* 218 */ virtual __int64 _vfunc218() { return NULL; };
+	/* 220 */ virtual __int64 _vfunc220() { return NULL; };
+	/* 228 */ virtual __int64 _vfunc228() { return NULL; };
+	/* 230 */ virtual __int64 _vfunc230() { return NULL; };
+	/* 238 */ virtual __int64 _vfunc238() { return NULL; };
+	/* 240 */ virtual __int64 _vfunc240() { return NULL; };
+	/* 248 */ virtual __int64 _vfunc248() { return NULL; };
+	/* 250 */ virtual __int64 _vfunc250() { return NULL; };
+	/* 258 */ virtual __int64 _vfunc258() { return NULL; };
+	/* 260 */ virtual __int64 _vfunc260() { return NULL; };
+	/* 268 */ virtual __int64 _vfunc268() { return NULL; };
+	/* 270 */ virtual __int64 _vfunc270() { return NULL; };
+	/* 278 */ virtual __int64 _vfunc278() { return NULL; };
+	/* 280 */ virtual __int64 _vfunc280() { return NULL; };
+	/* 288 */ virtual __int64 _vfunc288() { return NULL; };
+	/* 290 */ virtual __int64 _vfunc290() { return NULL; };
+	/* 298 */ virtual __int64 _vfunc298() { return NULL; };
+	/* 2A0 */ virtual __int64 _vfunc2A0() { return NULL; };
+	/* 2A8 */ virtual __int64 _vfunc2A8() { return NULL; };
+	/* 2B0 */ virtual __int64 _vfunc2B0() { return NULL; };
+	/* 2B8 */ virtual __int64 _vfunc2B8() { return NULL; };
+	/* 2C0 */ virtual __int64 _vfunc2C0() { return NULL; };
+	/* 2C8 */ virtual __int64 _vfunc2C8() { return NULL; };
+	/* 2D0 */ virtual __int64 _vfunc2D0() { return NULL; };
+	/* 2D8 */ virtual __int64 _vfunc2D8() { return NULL; };
+	/* 2E0 */ virtual __int64 _vfunc2E0() { return NULL; };
+	/* 2E8 */ virtual __int64 _vfunc2E8() { return NULL; };
+	/* 2F0 */ virtual __int64 _vfunc2F0() { return NULL; };
+	/* 2F8 */ virtual __int64 _vfunc2F8() { return NULL; };
+	/* 300 */ virtual __int64 _vfunc300() { return NULL; };
+	/* 308 */ virtual __int64 _vfunc308() { return NULL; };
+	/* 310 */ virtual __int64 _vfunc310() { return NULL; };
+	/* 318 */ virtual __int64 _vfunc318() { return NULL; };
+	/* 320 */ virtual __int64 _vfunc320() { return NULL; };
+	/* 328 */ virtual __int64 _vfunc328() { return NULL; };
+	/* 330 */ virtual __int64 _vfunc330() { return NULL; };
+	/* 338 */ virtual __int64 _vfunc338() { return NULL; };
+	/* 340 */ virtual __int64 _vfunc340() { return NULL; };
+	/* 348 */ virtual __int64 _vfunc348() { return NULL; };
+	/* 350 */ virtual __int64 _vfunc350() { return NULL; };
+	/* 358 */ virtual __int64 _vfunc358() { return NULL; };
+	/* 360 */ virtual __int64 _vfunc360() { return NULL; };
+	/* 368 */ virtual __int64 _vfunc368() { return NULL; };
+	/* 370 */ virtual __int64 _vfunc370() { return NULL; };
+	/* 378 */ virtual __int64 _vfunc378() { return NULL; };
+	/* 380 */ virtual __int64 _vfunc380() { return NULL; };
+	/* 388 */ virtual __int64 _vfunc388() { return NULL; };
+	/* 390 */ virtual __int64 _vfunc390() { return NULL; };
+	/* 398 */ virtual __int64 _vfunc398() { return NULL; };
+	/* 3A0 */ virtual __int64 _vfunc3A0() { return NULL; };
+	/* 3A8 */ virtual __int64 _vfunc3A8() { return NULL; };
+	/* 3B0 */ virtual __int64 _vfunc3B0() { return NULL; };
+	/* 3B8 */ virtual __int64 _vfunc3B8() { return NULL; };
+	/* 3C0 */ virtual __int64 _vfunc3C0() { return NULL; };
+	/* 3C8 */ virtual __int64 _vfunc3C8() { return NULL; };
+	/* 3D0 */ virtual __int64 _vfunc3D0() { return NULL; };
+	/* 3D8 */ virtual __int64 _vfunc3D8() { return NULL; };
+	/* 3E0 */ virtual __int64 _vfunc3E0() { return NULL; };
+	/* 3E8 */ virtual __int64 _vfunc3E8() { return NULL; };
+	/* 3F0 */ virtual __int64 _vfunc3F0() { return NULL; };
+	/* 3F8 */ virtual __int64 _vfunc3F8() { return NULL; };
+	/* 400 */ virtual __int64 _vfunc400() { return NULL; };
+	/* 408 */ virtual __int64 _vfunc408() { return NULL; };
+	/* 410 */ virtual __int64 _vfunc410() { return NULL; };
+	/* 418 */ virtual __int64 _vfunc418() { return NULL; };
+	/* 420 */ virtual __int64 _vfunc420() { return NULL; };
+	/* 428 */ virtual __int64 _vfunc428() { return NULL; };
+	/* 430 */ virtual __int64 _vfunc430() { return NULL; };
+	/* 438 */ virtual __int64 _vfunc438() { return NULL; };
+	/* 440 */ virtual __int64 _vfunc440() { return NULL; };
+	/* 448 */ virtual __int64 _vfunc448() { return NULL; };
+	/* 450 */ virtual __int64 _vfunc450() { return NULL; };
+	/* 458 */ virtual __int64 _vfunc458() { return NULL; };
+	/* 460 */ virtual __int64 _vfunc460() { return NULL; };
+	/* 468 */ virtual __int64 _vfunc468() { return NULL; };
+	/* 470 */ virtual __int64 _vfunc470() { return NULL; };
+	/* 478 */ 
+
+	/* 0018 */ UINT32 uSID;
+	/* 001C */ unsigned int _uUnkVal001C[9];
+	/* 0040 */ 
+};
+
+#pragma pack(pop)
+
+CompileTimeSizeCheck(CObject, 0x0040);

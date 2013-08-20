@@ -31,4 +31,6 @@
 
 //#include "Resource.h"
 
+extern CLog* g_Log;
+
 //

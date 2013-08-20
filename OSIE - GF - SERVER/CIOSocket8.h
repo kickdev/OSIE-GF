@@ -2,11 +2,11 @@
 
 #pragma pack(push, 1)
 
-class CIOSocket : public CIOObject
+class CIOSocket8 : public CIOObject
 {
 public:
-	CIOSocket() {};
-	~CIOSocket() {};
+	CIOSocket8() {};
+	~CIOSocket8() {};
 
 	/* 050 */ virtual __int64 _vfunc050() { return NULL; };
 	/* 058 */ virtual __int64 _vfunc058() { return NULL; };
@@ -24,4 +24,4 @@ public:
 
 #pragma pack(pop)
 
-CompileTimeSizeCheck(CIOSocket, 0x00B0);
+CompileTimeSizeCheck(CIOSocket8, 0xB0);

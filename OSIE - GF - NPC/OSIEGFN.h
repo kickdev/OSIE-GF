@@ -13,3 +13,5 @@ __forceinline void UnGuard()
 	UINT32 thr_index = *((UINT32*)(*((UINT64*)__readgsqword(0x58)) + 0x30F78));
 	((UINT32*)0x287B560)[thr_index]--;
 };
+
+#define UnGuardRet(x) { UnGuard(); return x; } // without ; ending

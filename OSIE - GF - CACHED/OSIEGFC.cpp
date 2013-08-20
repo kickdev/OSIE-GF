@@ -37,7 +37,7 @@ void DllInitializer(HMODULE hDllModule, DWORD ul_reason_for_call)
 			}
 		}
 		else
-		{	//некоторые 7ки х64 дллку в целях безопасности грузят выше 0x80000000 оффсета, что не дает возможности применять E8/E9 7F FF FF FF прыжки
+		{	//в некоторых случаях дллка грузится выше 0x80000000 оффсета, что не дает возможности применять E8/E9 7F FF FF FF прыжки
 			Msg(L"LoadError", L"[%s]\n dll loaded on bad allocation address (win7 fix)", __WFILE__);
 			ExitProcess(1);
 		}

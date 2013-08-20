@@ -31,4 +31,4 @@ public:
 
 #pragma pack(pop)
 
-CompileTimeSizeCheck(CWareHouse, 0xB8);
+CompileTimeSizeCheck(CWareHouse, 0x00B8);

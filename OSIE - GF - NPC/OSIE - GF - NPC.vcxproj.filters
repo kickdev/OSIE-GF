@@ -6,10 +6,10 @@
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
     <Filter Include="Utils">
-      <UniqueIdentifier>{8f92c717-4e8c-4955-b0d0-f40f5076bcb8}</UniqueIdentifier>
+      <UniqueIdentifier>{a3c5669b-ce51-452d-afa8-fe4f90c0f907}</UniqueIdentifier>
     </Filter>
     <Filter Include="Server Objects">
-      <UniqueIdentifier>{d14da869-7e36-447f-9134-3ea340a0908c}</UniqueIdentifier>
+      <UniqueIdentifier>{0416206f-a01f-4bd7-a7ba-2e03d9d5a981}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -31,9 +31,6 @@
       <Filter>Server Objects</Filter>
     </ClCompile>
     <ClCompile Include="..\Shared\IniFile.cpp">
-      <Filter>Utils</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Shared\MemoryTools.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
   </ItemGroup>
@@ -60,9 +57,6 @@
       <Filter>Server Objects</Filter>
     </ClInclude>
     <ClInclude Include="..\Shared\IniFile.h">
-      <Filter>Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Shared\MemoryTools.h">
       <Filter>Utils</Filter>
     </ClInclude>
   </ItemGroup>

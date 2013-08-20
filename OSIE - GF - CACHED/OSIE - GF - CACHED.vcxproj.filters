@@ -6,10 +6,10 @@
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
     <Filter Include="Utils">
-      <UniqueIdentifier>{b9d8004b-5970-4594-bdbf-54b4c5635f8a}</UniqueIdentifier>
+      <UniqueIdentifier>{7499486b-1d55-40e0-b5b0-b02a282c5519}</UniqueIdentifier>
     </Filter>
     <Filter Include="Server Objects">
-      <UniqueIdentifier>{5a8bc50a-c14a-47a0-996f-cf4cf0721d1a}</UniqueIdentifier>
+      <UniqueIdentifier>{df293243-766f-4e91-a8f6-a91718be1a4a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -69,9 +69,6 @@
     <ClCompile Include="..\Shared\IniFile.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
-    <ClCompile Include="..\Shared\MemoryTools.cpp">
-      <Filter>Utils</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="OSIEGFC.h">
@@ -129,9 +126,6 @@
       <Filter>Server Objects</Filter>
     </ClInclude>
     <ClInclude Include="..\Shared\IniFile.h">
-      <Filter>Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Shared\MemoryTools.h">
       <Filter>Utils</Filter>
     </ClInclude>
   </ItemGroup>

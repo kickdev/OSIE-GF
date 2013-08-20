@@ -111,7 +111,7 @@ public:
 
 #pragma pack(pop)
 
-CompileTimeOffsetCheck(CUser, uDataCreateTickCount, 0x118);
-CompileTimeOffsetCheck(CUser, UserSlotItemDbId, 0x290);
-CompileTimeOffsetCheck(CUser, AbnormalData, 0x490);
-CompileTimeSizeCheck(CUser, 0x9B0);
+CompileTimeOffsetCheck(CUser, uDataCreateTickCount, 0x0118);
+CompileTimeOffsetCheck(CUser, UserSlotItemDbId, 0x0290);
+CompileTimeOffsetCheck(CUser, AbnormalData, 0x0490);
+CompileTimeSizeCheck(CUser, 0x09B0);
