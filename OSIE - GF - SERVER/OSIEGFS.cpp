@@ -177,7 +177,7 @@ void DllInitializer(HMODULE hDllModule, DWORD ul_reason_for_call)
 					//Msg(L"Load", L"[%s]\n complete loaded, 0x%08X", __WFILE__, *((UINT32*)0x5E1869));
 					g_Vars.Initialize(); // initialization ini file
 
-					WriteInstruction(0x6B3423, (UINT32)ShowLog, 0xE8);			//copyrite DevExt
+					WriteInstructionCall(0x6B3423, (UINT32)ShowLog);			//copyrite DevExt
 					//L2Server Protocol start
 					WriteMemoryBYTES(0xC6BD83, (void *)g_Vars.GetServerProtocol(), strlen(g_Vars.GetServerProtocol()));
 					//L2Server Protocol end
