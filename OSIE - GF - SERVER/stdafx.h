@@ -28,6 +28,7 @@
 #include "OSIEGFS.h"
 
 #include "CLog.h"
+#include "Vars.h"
 
 //#include "Resource.h"
 

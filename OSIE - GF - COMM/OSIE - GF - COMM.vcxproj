@@ -96,6 +96,8 @@
     <MASM_x86 Include="GlobalFunctions.asm" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\Shared\IniFile.cpp" />
+    <ClCompile Include="..\Shared\MemoryTools.cpp" />
     <ClCompile Include="OSIEGFB.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -105,6 +107,8 @@
     <ClCompile Include="..\Shared\Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Shared\IniFile.h" />
+    <ClInclude Include="..\Shared\MemoryTools.h" />
     <ClInclude Include="OSIEGFB.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="CLog.h" />

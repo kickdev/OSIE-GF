@@ -30,6 +30,15 @@
     <ClCompile Include="CLog.cpp">
       <Filter>Server Objects</Filter>
     </ClCompile>
+    <ClCompile Include="..\Shared\IniFile.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\MemoryTools.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Vars.cpp">
+      <Filter>Main Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="OSIEGFS.h">
@@ -52,6 +61,15 @@
     </ClInclude>
     <ClInclude Include="CLog.h">
       <Filter>Server Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\IniFile.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\MemoryTools.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Vars.h">
+      <Filter>Main Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

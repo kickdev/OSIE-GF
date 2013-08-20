@@ -1,7 +1,27 @@
 #include "stdafx.h"
 
 extern HANDLE g_Server;
+extern CVars g_Vars; // global params
+
 CLog* g_Log = (CLog*)0x0913EDD0;
+
+void ShowLog(void* pVoid, int nParam, const char* _str, ...)
+{
+	Guard(__WFUNCSIG__);
+
+	g_Log->Add(CLog::blue, "L2Server Start and Patched by OSI Extender");
+
+	UnGuard();
+}
+
+void RedErrorBlock(void* pVoid, int nParam, const wchar_t* wstr, ...)
+{
+	Guard(__WFUNCSIG__);
+
+	g_Log->Add(CLog::red, "Test vars = %d", g_Vars.GetTestValue());
+
+	UnGuard();
+}
 
 void DllInitializer(HMODULE hDllModule, DWORD ul_reason_for_call)
 {
@@ -13,11 +33,16 @@ void DllInitializer(HMODULE hDllModule, DWORD ul_reason_for_call)
 		{
 			if(*((UINT64*)0x401000) == 0xC6006406C1058D48)
 			{
-				if((g_Server = OpenProcess(PROCESS_ALL_ACCESS | PROCESS_VM_READ | PROCESS_VM_WRITE, FALSE, GetCurrentProcessId())))
+				if(g_Server = OpenProcess(PROCESS_ALL_ACCESS | PROCESS_VM_READ | PROCESS_VM_WRITE, FALSE, GetCurrentProcessId()))
 				{
-
+					g_Vars.Initialize(); // initialization ini file
 //					Msg(L"Load", L"[%s]\n complete loaded", __WFILE__);
-
+					WriteInstructionCALL(0x006B3423, 0x006B3423 + 5, (void *)ShowLog);		//copyrite DevExt
+					WriteInstructionCALL(0x006D323A, 0x006D323A + 5, (void *)RedErrorBlock);	//mallok rederr block
+					WriteInstructionCALL(0x0042E44A, 0x0042E44A + 5, (void *)RedErrorBlock);	//move venicle rederr block
+					//L2Server Protocol start
+					WriteMemoryBYTES(0x00C6BD83, (void *)g_Vars.GetServerProtocol(), strlen(g_Vars.GetServerProtocol()));
+					//L2Server Protocol end
 					CloseHandle(g_Server);
 					g_Server = NULL;
 				}

@@ -121,6 +121,8 @@
     <MASM_x64 Include="GlobalFunctions.asm" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\Shared\IniFile.cpp" />
+    <ClCompile Include="..\Shared\MemoryTools.cpp" />
     <ClCompile Include="OSIEGFC.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -142,6 +144,8 @@
     <ClCompile Include="RWLock.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Shared\IniFile.h" />
+    <ClInclude Include="..\Shared\MemoryTools.h" />
     <ClInclude Include="OSIEGFC.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="..\Shared\Enumerations.h" />

@@ -30,6 +30,12 @@
     <ClCompile Include="..\Shared\Utils.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
+    <ClCompile Include="..\Shared\IniFile.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\MemoryTools.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="OSIEGFB.h">
@@ -51,6 +57,12 @@
       <Filter>Utils</Filter>
     </ClInclude>
     <ClInclude Include="..\Shared\Utils.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\IniFile.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\MemoryTools.h">
       <Filter>Utils</Filter>
     </ClInclude>
   </ItemGroup>

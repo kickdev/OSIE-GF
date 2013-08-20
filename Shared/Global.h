@@ -58,6 +58,7 @@
 #include <Psapi.h>
 #include <Iphlpapi.h>
 #include <Mswsock.h>
+#include <cstdlib> // strtoul
 
 using namespace std;
 
@@ -81,3 +82,5 @@ class CCreature;
 #include "Enumerations.h"
 #include "Structures.h"
 #include "Utils.h"
+#include "IniFile.h"
+#include "MemoryTools.h"

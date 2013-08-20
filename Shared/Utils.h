@@ -1,10 +1,3 @@
-#pragma once
-
-void WriteMemoryBYTES(unsigned int uAddress, void* bytes, unsigned int len);
-void WriteMemoryQWORD(unsigned int uAddress, unsigned __int64 value);
-void WriteMemoryDWORD(unsigned int uAddress, unsigned int value);
-void WriteMemoryWORD(unsigned int uAddress, unsigned short value);
-void WriteMemoryBYTE(unsigned int uAddress, unsigned char value);
 
 void Msg(const char* title, const char* format, ...);
 void Msg(const wchar_t* title, const wchar_t* format, ...);
