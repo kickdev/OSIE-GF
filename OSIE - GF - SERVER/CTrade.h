@@ -35,7 +35,7 @@ public:
 	/* 2074 */ BYTE pBuff2[8192]; 
 	/* 4074 */ UINT32 _uUnkVal4074; 
 	/* 4078 */ UINT32 _uUnkVal4078; 
-	/* 407C */ UINT32 _uUnkVal407C[3]; //new type lock
+	/* 407C */ CYieldLock trade_cs;
 	/* 4088 */ DWORD nTickCount2; 
 	/* 408C */ UINT32 _padding408C; 
 	/* 4090 */

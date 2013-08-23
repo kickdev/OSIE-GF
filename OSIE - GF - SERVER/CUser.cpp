@@ -17,4 +17,24 @@ CUser* __cdecl CUser::UserDestructor(CUser* pUser, bool bIsMemoryFreeUsed)
 	return f(pUser, bIsMemoryFreeUsed);
 }
 
+bool __thiscall CUser::_DeleteItemInInventoryBeforeCommit(CUser* pUser, UINT32 uItemId, UINT64 uItemCount)
+{
+	Guard(__WFUNCSIG__);
+
+	bool bReturn;
+	if(!pUser->IsNowTrade())
+	{
+		typedef bool (__thiscall *t)(CUser*, UINT32, UINT64);
+		t f = (t)0x008E8D54;
+		bReturn = f(pUser, uItemId, uItemCount);
+	}
+	else
+	{
+		g_Log->Add(CLog::red, L"(FIXED BY L2M.RU) user [%s] try DeleteItemInInventoryBeforeCommit, with opened trade !", pUser->SD->wszName);
+		bReturn = false;
+	}
+
+	UnGuardRet(bReturn)
+}
+
 //

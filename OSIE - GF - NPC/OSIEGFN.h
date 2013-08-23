@@ -1,6 +1,6 @@
 #pragma once
 
-unsigned char* Disassemble(unsigned char* buf, const char* format, ...);
+unsigned char* Disassemble(const unsigned char* buf, const char* format, ...);
 
 __forceinline void Guard(const wchar_t* pFuncName)
 {

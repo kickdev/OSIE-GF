@@ -16,7 +16,11 @@ public:
 	/* 00B8 */ in_addr client_ip;
 	/* 00BC */ unsigned int _uUnkVal00BC;
 	/* 00C0 */ UINT64* pPacketTable;
-	/* 00C8 */ unsigned int _uUnkVal00C8[14];
+	/* 00C8 */ unsigned int _uUnkVal00C8;
+	/* 00CC */ UINT32 uSocketStatus;
+	/* 00D0 */ UINT32 uReadPacketLen;
+	/* 00D4 */ UINT32 uReadPacketCount;
+	/* 00D8 */ unsigned int _uUnkVal00D8[10];
 	/* 0100 */ 
 };
 

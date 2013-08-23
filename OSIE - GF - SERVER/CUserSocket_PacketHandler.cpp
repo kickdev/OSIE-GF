@@ -327,17 +327,17 @@ UINT64 __cdecl CUserSocket::OutGamePacketHandler(CUserSocket* pUserSocket, const
 	}
 	else if(pUserSocket->UserSocketExt.nLoginStage == 6)
 	{
-		switch(uOpcode)
-		{
-		default:
-			{
+		//switch(uOpcode)
+		//{
+		//default:
+		//	{
 #ifdef L2SERVER_DEBUG
 				g_Log->Add(CLog::black, L"[%s][%d] packet 0x%02X blocked by stage, len %u, login_stage %i", __WFUNCTION__, __LINE__, uOpcode, uPacketLen, _nLoginStage);
 #endif // L2SERVER_DEBUG
 				bPacketResult = false;
-				break;
-			}
-		}
+		//		break;
+		//	}
+		//}
 	}
 	else
 	{
@@ -400,7 +400,7 @@ UINT64 __cdecl CUserSocket::InGamePacketHandler(CUserSocket* pUserSocket, const 
 							else
 							{
 #ifdef L2SERVER_DEBUG
-								g_Log->Add(CLog::red, L"[%s][%d] user [%s] try add item in trade, but trade not exist", __WFUNCTION__, __LINE__, pUser->SD->pName);
+								g_Log->Add(CLog::red, L"[%s][%d] user [%s] try add item to trade, but trade not exist", __WFUNCTION__, __LINE__, pUser->SD->wszName);
 #endif // L2SERVER_DEBUG
 								bPacketResult = true;
 							}

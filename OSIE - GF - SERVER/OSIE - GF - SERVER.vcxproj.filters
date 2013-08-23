@@ -6,18 +6,16 @@
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
     <Filter Include="Utils">
-      <UniqueIdentifier>{d389bdf8-ff5d-42c7-86f6-c0d4008094a9}</UniqueIdentifier>
+      <UniqueIdentifier>{85f6fd5d-543a-4765-9a23-1a42a56fc147}</UniqueIdentifier>
     </Filter>
     <Filter Include="Server Objects">
-      <UniqueIdentifier>{498563ec-ac22-4e11-91fd-7a2b6079366f}</UniqueIdentifier>
+      <UniqueIdentifier>{9a8b22b9-87a7-4a05-bf51-eb5ff593b82f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <MASM_x64 Include="GlobalFunctions.asm">
+    <ClCompile Include="Config.cpp">
       <Filter>Main Files</Filter>
-    </MASM_x64>
-  </ItemGroup>
-  <ItemGroup>
+    </ClCompile>
     <ClCompile Include="OSIEGFS.cpp">
       <Filter>Main Files</Filter>
     </ClCompile>
@@ -28,6 +26,15 @@
       <Filter>Utils</Filter>
     </ClCompile>
     <ClCompile Include="CCreature.cpp">
+      <Filter>Server Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="CHTMLCache.cpp">
+      <Filter>Server Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="CHTMLCacheManager.cpp">
+      <Filter>Server Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="CIOCriticalSection.cpp">
       <Filter>Server Objects</Filter>
     </ClCompile>
     <ClCompile Include="CIOObject.cpp">
@@ -51,7 +58,13 @@
     <ClCompile Include="CObjectSP.cpp">
       <Filter>Server Objects</Filter>
     </ClCompile>
+    <ClCompile Include="CPledge.cpp">
+      <Filter>Server Objects</Filter>
+    </ClCompile>
     <ClCompile Include="CSharedCreatureData.cpp">
+      <Filter>Server Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="CSharedPledgeData.cpp">
       <Filter>Server Objects</Filter>
     </ClCompile>
     <ClCompile Include="CSocket.cpp">
@@ -75,10 +88,16 @@
     <ClCompile Include="CUserSocket_PacketHandler.cpp">
       <Filter>Server Objects</Filter>
     </ClCompile>
+    <ClCompile Include="CUserSocket_PacketHandler2.cpp">
+      <Filter>Server Objects</Filter>
+    </ClCompile>
     <ClCompile Include="CUserSocketExt.cpp">
       <Filter>Server Objects</Filter>
     </ClCompile>
     <ClCompile Include="CWorldObject.cpp">
+      <Filter>Server Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="CYieldLock.cpp">
       <Filter>Server Objects</Filter>
     </ClCompile>
     <ClCompile Include="..\Shared\IniFile.cpp">
@@ -89,6 +108,9 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Config.h">
+      <Filter>Main Files</Filter>
+    </ClInclude>
     <ClInclude Include="OSIEGFS.h">
       <Filter>Main Files</Filter>
     </ClInclude>
@@ -108,6 +130,15 @@
       <Filter>Utils</Filter>
     </ClInclude>
     <ClInclude Include="CCreature.h">
+      <Filter>Server Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="CHTMLCache.h">
+      <Filter>Server Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="CHTMLCacheManager.h">
+      <Filter>Server Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="CIOCriticalSection.h">
       <Filter>Server Objects</Filter>
     </ClInclude>
     <ClInclude Include="CIOObject.h">
@@ -131,7 +162,13 @@
     <ClInclude Include="CObjectSP.h">
       <Filter>Server Objects</Filter>
     </ClInclude>
+    <ClInclude Include="CPledge.h">
+      <Filter>Server Objects</Filter>
+    </ClInclude>
     <ClInclude Include="CSharedCreatureData.h">
+      <Filter>Server Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="CSharedPledgeData.h">
       <Filter>Server Objects</Filter>
     </ClInclude>
     <ClInclude Include="CSocket.h">
@@ -152,11 +189,19 @@
     <ClInclude Include="CWorldObject.h">
       <Filter>Server Objects</Filter>
     </ClInclude>
+    <ClInclude Include="CYieldLock.h">
+      <Filter>Server Objects</Filter>
+    </ClInclude>
     <ClInclude Include="..\Shared\IniFile.h">
       <Filter>Utils</Filter>
     </ClInclude>
     <ClInclude Include="Vars.h">
       <Filter>Main Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <MASM_x64 Include="GlobalFunctions.asm">
+      <Filter>Main Files</Filter>
+    </MASM_x64>
   </ItemGroup>
 </Project>

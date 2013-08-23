@@ -4,6 +4,12 @@ extern HANDLE g_Server;
 CLog* g_Log = (CLog*)0x01962620;
 CUserDb* g_UserDb = (CUserDb*)0x0273A1D0;
 
+void L2GFExtL2MFix()
+{
+	NOPMemory(0x4623C9, 5); //disable send mail to nc
+	NOPMemory(0x463066, 5); //disable send mail to nc
+}
+
 void DllInitializer(HMODULE hDllModule, DWORD ul_reason_for_call)
 {
 //	Msg(L"Load", L"[%s]\n DbgBreak", __WFILE__);
@@ -16,8 +22,24 @@ void DllInitializer(HMODULE hDllModule, DWORD ul_reason_for_call)
 			{
 				if((g_Server = OpenProcess(PROCESS_ALL_ACCESS | PROCESS_VM_READ | PROCESS_VM_WRITE, FALSE, GetCurrentProcessId())))
 				{
+					BYTE uRpgClubType = NULL;
+					HMODULE hRpgClubModule;
+					const wchar_t* pRpgClubDllName = L"CacheGFExt.dll";
+					if((hRpgClubModule = GetModuleHandleW(pRpgClubDllName)))
+					{
+						if(*((UINT64*)(((UINT64)hRpgClubModule) + 0x1000)) == 0x7501FA8328EC8348)
+							uRpgClubType = 1;
+						else
+						{
+							Msg(L"LoadWarning", L"[%s]\n not supported version of %s detected", __WFILE__, pRpgClubDllName);
+//							ExitProcess(1);
+						}
+					}
+
 					//AdminPacket - MoveItem2Packet fix: cached crash if item not finded by dbid
 					WriteMemoryQWORD(0x6A3320, (UINT64)MoveItem2Packet);
+
+					L2GFExtL2MFix(); //fixes from L2GFExt L2M.RU Project 
 
 //					Msg(L"Load", L"[%s]\n complete loaded", __WFILE__);
 
@@ -72,12 +94,12 @@ __declspec(dllexport) BOOL APIENTRY DllMain(HMODULE hDllModule, DWORD ul_reason_
 	return TRUE;
 }
 
-unsigned char* Disassemble(unsigned char* buf, const char* format, ...)
+unsigned char* Disassemble(const unsigned char* buf, const char* format, ...)
 {
 	Guard(__WFUNCSIG__);
 	va_list va;
 	va_start(va, format);
-	typedef unsigned char* (__cdecl *t)(unsigned char*, const char*, va_list);
+	typedef unsigned char* (__cdecl *t)(const unsigned char*, const char*, va_list);
 	t f = (t)0x004737A4;
 	unsigned char* pReturn = f(buf, format, va);
 	va_end(va);

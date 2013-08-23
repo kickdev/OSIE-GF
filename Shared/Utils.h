@@ -8,8 +8,9 @@ void WriteMemoryBYTE(unsigned int uAddress, unsigned char value);
 void NOPMemory(unsigned int uAddress, unsigned int len);
 void NULLMemory(unsigned int uAddress, unsigned int len);
 void WriteInstruction(unsigned int uAddress, unsigned int uDestination, unsigned char uFirstByte);
-void WriteInstructionJmp(unsigned int uAddress, unsigned int uDestination, unsigned int uNopEnd = NULL);
+void WriteInstructionCallJmpEax(unsigned int uAddress, unsigned int uDestination, unsigned int uNopEnd = NULL);
 void WriteInstructionCall(unsigned int uAddress, unsigned int uDestination, unsigned int uNopEnd = NULL);
+void WriteInstructionJmp(unsigned int uAddress, unsigned int uDestination, unsigned int uNopEnd = NULL);
 
 class CodeRestoratorOpcodeVariation
 {
@@ -51,7 +52,7 @@ public:
 	};
 
 	bool OpenParentFile(void* _hServer, unsigned __int64 uAppHash);
-	bool RestoreFunctionCode(unsigned int uAddress);
+	bool RestoreFunctionCode(unsigned int uAddress, unsigned int uControlSize = NULL);
 	void AddToLog(const wchar_t* format, ...);
 
 	/* 0000 */ unsigned char* pFileMem;
@@ -65,6 +66,46 @@ public:
 	/* 0020 */ FILE* pLogFile;
 	//* 0028 */ m_byte_rci rci;
 	/* 0028 */ 
+};
+
+#define FILE_LOG_ELEMENT_BUFFER_SIZE 2038
+#define FILE_LOG_COUNT_TO_SAVE 1024
+
+class CFileLogLine
+{
+public:
+	~CFileLogLine() {};
+
+	/* 0000 */ SYSTEMTIME log_time;
+	/* 0000 */ WCHAR buff[FILE_LOG_ELEMENT_BUFFER_SIZE];
+	/* 0000 */ UINT32 buff_size;
+	/* 0000 */ 
+};
+
+class CFileLog
+{
+public:
+	~CFileLog() { this->Save(); };
+
+	bool OpenLogFile(const wchar_t* pLogFilePath);
+	void AddToLog(const wchar_t* format, ...);
+	void Save();
+	void Enter()
+	{
+		while(true)
+		{
+			if(!InterlockedCompareExchange(&this->lock, 1, 0))
+				break;
+			Sleep(10);
+		}
+	};
+	void Leave() { InterlockedExchange(&this->lock, 0); };
+
+	/* 0000 */ volatile long lock;
+	/* 0000 */ volatile long log_data_counter;
+	/* 0000 */ wchar_t log_file_path[MAX_PATH];
+	/* 0000 */ CFileLogLine log_line[FILE_LOG_COUNT_TO_SAVE];
+	/* 0000 */ 
 };
 
 void Msg(const char* title, const char* format, ...);

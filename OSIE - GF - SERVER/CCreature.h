@@ -122,7 +122,7 @@ public:
 	/* 828 */ virtual __int64 _vfunc828() { return NULL; };
 	/* 830 */ virtual __int64 _vfunc830() { return NULL; };
 	/* 838 */ virtual __int64 _vfunc838() { return NULL; };
-	/* 840 */ virtual __int64 _vfunc840() { return NULL; };
+	/* 840 */ virtual bool DeleteItemInInventoryBeforeCommit(UINT32 uVar1, UINT32 uVar2) { return false; };
 	/* 848 */ virtual __int64 _vfunc848() { return NULL; };
 	/* 850 */ virtual __int64 _vfunc850() { return NULL; };
 	/* 858 */ virtual __int64 _vfunc858() { return NULL; };
@@ -201,9 +201,26 @@ public:
 	/* AA0 */ virtual __int64 _vfuncAA0() { return NULL; };
 	/* AA8 */ 
 
+	CCreature* GetTarget()
+	{
+		CCreature* pReturn = NULL;
+		UINT32 _uTargetObjId;
+		if((_uTargetObjId = this->uTargetObjId) && (_uTargetObjId & 0xF8000000) == 0x48000000)
+		{
+			typedef CCreature* (__thiscall *t)(UINT64, UINT32);
+			t f = (t)0x0041A3A4;
+			pReturn = f(0xF1B250, _uTargetObjId);
+		}
+		return pReturn;
+	};
+
 	/* 0048 */ unsigned int _uUnkVal0048[658];
 	/* 0A90 */ CSharedCreatureData* SD;
-	/* 0A98 */ unsigned int _uUnkVal0A98[1158];
+	/* 0A98 */ unsigned int _uUnkVal0A98[2];
+	/* 0AA0 */ CYieldLock sd_cs;
+	/* 0AAC */ unsigned int _uUnkVal0AAC[621];
+	/* 1460 */ UINT32 uTargetObjId;
+	/* 1464 */ unsigned int _uUnkVal1464[531];
 	/* 1CB0 */ 
 };
 

@@ -2,6 +2,8 @@
 
 #pragma pack(push, 1)
 
+class CTrade;
+
 class CObjectSP
 {
 public:

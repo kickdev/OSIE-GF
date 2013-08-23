@@ -144,7 +144,9 @@ public:
 	/* 478 */ 
 
 	/* 0018 */ UINT32 uSID;
-	/* 001C */ unsigned int _uUnkVal001C[9];
+	/* 001C */ unsigned int _uUnkVal001C[7];
+	/* 0038 */ unsigned int _uUnkVal0038;
+	/* 003C */ unsigned int _uUnkVal003C;
 	/* 0040 */ 
 };
 

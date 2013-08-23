@@ -28,16 +28,16 @@ public:
 	};
 
 	UINT32 GetId() { return this->uCharDbId; };
-	wchar_t* GetCharName() { return this->CharName; };
+	wchar_t* GetCharName() { return this->wszCharName; };
 
 	/* 0018 */ unsigned int _uUnkVal0018[64];
 	/* 0118 */ DWORD uDataCreateTickCount;
 	/* 011C */ unsigned int _uUnkVal011C[3];
 	/* 0128 */ RWLock user_data_cs;
 	/* 0160 */ unsigned int _uUnkVal0160[16];
-	/* 01A0 */ WCHAR CharName[24];
+	/* 01A0 */ WCHAR wszCharName[24];
 	/* 01D0 */ UINT32 uCharDbId;
-	/* 01D4 */ WCHAR CharAccount[24];
+	/* 01D4 */ WCHAR wszCharAccount[24];
 	/* 0204 */ UINT32 uAccountDbId;
 	/* 0208 */ UINT32 uPledgeDbId;
 	/* 020C */ UINT32 uBuilderLvL;
@@ -100,7 +100,7 @@ public:
 	/* 0480 */ SYSTEMTIME create_date;
 	/* 0490 */ unsigned int AbnormalData[34][4];
 	/* 06B0 */ unsigned int _uUnkVal06B0[7];
-	/* 06CC */ WCHAR CharTitle[24];
+	/* 06CC */ WCHAR wszCharTitle[24];
 	/* 06FC */ unsigned int _uUnkVal06FC[11];
 	/* 0728 */ unsigned int QuestData[26][4];
 	/* 08C8 */ bool bCharInGame;

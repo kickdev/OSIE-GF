@@ -2,7 +2,8 @@
 
 CUserExt::CUserExt()
 {
-	this->bFlag0000 = false;
+	this->bIsEnterIntoWorld = false;
+	this->bIsEnteredIntoWorld = false;
 	this->uBuilderLvL = NULL;
 }
 

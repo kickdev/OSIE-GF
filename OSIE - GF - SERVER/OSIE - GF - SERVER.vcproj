@@ -192,6 +192,14 @@
 			UniqueIdentifier="{8710B99E-A106-4b60-AB42-51D18AB70F8A}"
 			>
 			<File
+				RelativePath=".\Config.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Config.h"
+				>
+			</File>
+			<File
 				RelativePath=".\GlobalFunctions.asm"
 				>
 			</File>
@@ -264,6 +272,30 @@
 				>
 			</File>
 			<File
+				RelativePath=".\CHTMLCache.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\CHTMLCache.h"
+				>
+			</File>
+			<File
+				RelativePath=".\CHTMLCacheManager.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\CHTMLCacheManager.h"
+				>
+			</File>
+			<File
+				RelativePath=".\CIOCriticalSection.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\CIOCriticalSection.h"
+				>
+			</File>
+			<File
 				RelativePath=".\CIOObject.cpp"
 				>
 			</File>
@@ -320,11 +352,27 @@
 				>
 			</File>
 			<File
+				RelativePath=".\CPledge.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\CPledge.h"
+				>
+			</File>
+			<File
 				RelativePath=".\CSharedCreatureData.cpp"
 				>
 			</File>
 			<File
 				RelativePath=".\CSharedCreatureData.h"
+				>
+			</File>
+			<File
+				RelativePath=".\CSharedPledgeData.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\CSharedPledgeData.h"
 				>
 			</File>
 			<File
@@ -376,6 +424,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\CUserSocket_PacketHandler2.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\CUserSocketExt.cpp"
 				>
 			</File>
@@ -385,6 +437,14 @@
 			</File>
 			<File
 				RelativePath=".\CWorldObject.h"
+				>
+			</File>
+			<File
+				RelativePath=".\CYieldLock.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\CYieldLock.h"
 				>
 			</File>
 		</Filter>

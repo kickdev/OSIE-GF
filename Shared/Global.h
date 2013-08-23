@@ -84,4 +84,5 @@ class CCreature;
 #include "Enumerations.h"
 #include "Structures.h"
 #include "Utils.h"
+
 #include "IniFile.h"

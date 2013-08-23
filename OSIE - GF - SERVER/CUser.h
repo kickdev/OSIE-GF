@@ -12,9 +12,10 @@ public:
 
 	CUser* GetUser(); //compiler optimized this
 
-	/* 0000 */ bool bFlag0000;		//
-	/* 0000 */ bool _padding[3];	//
-	/* 0004 */ UINT32 uBuilderLvL;	//
+	/* 0000 */ bool bIsEnterIntoWorld;		//
+	/* 0001 */ bool bIsEnteredIntoWorld;	//
+	/* 0002 */ bool _padding0002[2];		//
+	/* 0004 */ UINT32 uBuilderLvL;			//
 	/* 0008 */ 
 };
 
@@ -23,6 +24,21 @@ struct RpgClubUserExt
 	/* 0000 */ CUser* pUser;		//pUser
 	/* 0008 */ 
 };
+
+struct HTMLCmdData
+{
+#ifdef IS_VS2005_RELEASE
+	/* 0000 */ wstring html_data;  
+#else //IS_VS2005_RELEASE
+	/* 0000 */ unsigned char _padding0000[VS2005_RELEASE_STRING_SIZE];
+#endif //IS_VS2005_RELEASE 
+	/* 0028 */ UINT64 var0028[4];
+	/* 0048 */ 
+};
+
+CompileTimeSizeCheck(HTMLCmdData, 0x48);
+
+typedef vector<HTMLCmdData> v_html_data;
 
 class CUser : public CCreature
 {
@@ -96,6 +112,8 @@ public:
 	/* C88 */ virtual __int64 _vfuncC88() { return NULL; };
 	/* C90 */
 
+	/* 840 */ static bool __thiscall _DeleteItemInInventoryBeforeCommit(CUser* pUser, UINT32 uItemId, UINT64 uItemCount);
+
 	bool IsNowTrade()
 	{
 		typedef bool (__thiscall *t)(CUser*);
@@ -109,7 +127,16 @@ public:
 		return f(this);
 	};
 
-	/* 1CB0 */ unsigned int _uUnkVal1CB0[1452];
+	/* 1CB0 */ unsigned int _uUnkVal1CB0[1389];
+	/* 3264 */ CYieldLock html_cs;
+	/* 3270 */ bool bUnkVal3270;
+	/* 3271 */ bool bUnkVal3271[7];
+#ifdef IS_VS2005_RELEASE
+	/* 3278 */ v_html_data html_data;  
+#else //IS_VS2005_RELEASE
+	/* 3278 */ unsigned char _padding3278[VS2005_RELEASE_VECTOR_SIZE];
+#endif //IS_VS2005_RELEASE 
+	/* 3298 */ unsigned int _uUnkVal3298[50]; 
 	/* 3360 */ UINT32 uTradeSID;
 	/* 3364 */ unsigned int _uUnkVal3364[427];
 	/* 3A10 */ CUserExt UserExt;

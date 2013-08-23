@@ -92,7 +92,7 @@ void WriteInstruction(unsigned int uAddress, unsigned int uDestination, unsigned
 	WriteMemoryBYTES(uAddress, ExecLine, 5);
 }
 
-void WriteInstructionJmp(unsigned int uAddress, unsigned int uDestination, unsigned int uNopEnd)
+void WriteInstructionCallJmpEax(unsigned int uAddress, unsigned int uDestination, unsigned int uNopEnd)
 {
 	unsigned char ExecLine[7];
 	ExecLine[0] = 0xE8;
@@ -107,6 +107,16 @@ void WriteInstructionCall(unsigned int uAddress, unsigned int uDestination, unsi
 {
 	unsigned char ExecLine[5];
 	ExecLine[0] = 0xE8;
+	*((int*)(ExecLine + 1)) = (((int)uDestination) - (((int)uAddress) + 5));
+	WriteMemoryBYTES(uAddress, ExecLine, 5);
+	if(uNopEnd && uNopEnd > (uAddress + 5))
+		NOPMemory((uAddress + 5), (uNopEnd - (uAddress + 5)));
+}
+
+void WriteInstructionJmp(unsigned int uAddress, unsigned int uDestination, unsigned int uNopEnd)
+{
+	unsigned char ExecLine[5];
+	ExecLine[0] = 0xE9;
 	*((int*)(ExecLine + 1)) = (((int)uDestination) - (((int)uAddress) + 5));
 	WriteMemoryBYTES(uAddress, ExecLine, 5);
 	if(uNopEnd && uNopEnd > (uAddress + 5))
@@ -184,7 +194,7 @@ bool CCodeRestorator::OpenParentFile(HANDLE _hServer, unsigned __int64 uAppHash)
 						SYSTEMTIME log_time;
 						GetLocalTime(&log_time);
 						this->AddToLog(L" === Code Restorator Log === %02d/%02d/%04d %02d:%02d:%02d.%03d === ", log_time.wMonth, log_time.wDay, log_time.wYear, 
-						log_time.wHour, log_time.wMinute, log_time.wSecond);
+						log_time.wHour, log_time.wMinute, log_time.wSecond, log_time.wMilliseconds);
 					}
 					return true;
 				}
@@ -203,7 +213,7 @@ bool CCodeRestorator::OpenParentFile(HANDLE _hServer, unsigned __int64 uAppHash)
 	return false;
 }
 
-bool CCodeRestorator::RestoreFunctionCode(unsigned int uAddress)
+bool CCodeRestorator::RestoreFunctionCode(unsigned int uAddress, unsigned int uControlSize)
 {
 	if(uAddress > this->uTextAddrOffset)
 	{
@@ -278,8 +288,24 @@ bool CCodeRestorator::RestoreFunctionCode(unsigned int uAddress)
 		}
 		len = (unsigned int)(pI - pCode);
 
-		if(this->bIsShowRate)
-			this->AddToLog(L"offset 0x%08X, func size %u bytes, %u %%", uAddress, len, uPercentage);
+		if(uControlSize)
+		{
+			if(uControlSize != len)
+			{
+				if(uControlSize > len)
+				{
+					this->AddToLog(L"offset 0x%08X size check error, func size %u < control size %u, use %u", uAddress, len, uControlSize, uControlSize);
+					len = uControlSize;
+				}
+				else
+					this->AddToLog(L"offset 0x%08X size check error, func size %u > control size %u, use %u", uAddress, len, uControlSize, len);
+			}
+		}
+		else
+		{
+			if(this->bIsShowRate)
+				this->AddToLog(L"offset 0x%08X, func size %u bytes, %u %%", uAddress, len, uPercentage);
+		}
 
 		DWORD flOldProtect;
 		SIZE_T uNumberOfBytesWritten;
@@ -306,14 +332,103 @@ void CCodeRestorator::AddToLog(const wchar_t* format, ...)
 	va_list va;
 	va_start(va, format);
 	wchar_t pBuff[MSG_BUFFER_SIZE];
-	unsigned int nSize = (unsigned int)vswprintf_s(pBuff, MSG_BUFFER_SIZE, format, va);
-	if(nSize < (MSG_BUFFER_SIZE - 2) && this->pLogFile && this->bIsUseLog)
+	unsigned int uSize = (unsigned int)vswprintf_s(pBuff, (MSG_BUFFER_SIZE - 2), format, va);
+	if(uSize < (MSG_BUFFER_SIZE - 2) && this->pLogFile && this->bIsUseLog)
 	{
-		pBuff[nSize] = 0x0D; nSize++;
-		pBuff[nSize] = 0x0A; nSize++;
-		fwrite((void*)&pBuff[0], (nSize * 2), 1, this->pLogFile);
+		pBuff[uSize] = 0x0D; uSize++;
+		pBuff[uSize] = 0x0A; uSize++;
+		fwrite((void*)&pBuff[0], (uSize * 2), 1, this->pLogFile);
 	}
 	va_end(va);
+}
+
+// =================================================================================================================
+
+bool CFileLog::OpenLogFile(const wchar_t* pLogFilePath)
+{
+	SYSTEMTIME _log_time;
+	GetLocalTime(&_log_time);
+	wchar_t pFilePath[MAX_PATH];
+	UINT32 uPathSize = GetModuleFileNameW(NULL, pFilePath, MAX_PATH), uFilePathSize = (UINT32)wcslen(pLogFilePath);
+	if(uPathSize < (MAX_PATH - 15) && *pLogFilePath != '\\')
+	{
+		for(; uPathSize != NULL; uPathSize--)
+		{
+			if(pFilePath[uPathSize] == '\\')
+			{
+				uPathSize++;
+				break;
+			}
+		}
+		if(((MAX_PATH - 15) - uPathSize) > uFilePathSize)
+		{
+			memcpy(this->log_file_path, pFilePath, (uPathSize * 2));
+			memcpy(&this->log_file_path[uPathSize], pLogFilePath, (uFilePathSize * 2));
+			uPathSize += uFilePathSize;
+			if(((UINT32)swprintf_s(&this->log_file_path[uPathSize], (MAX_PATH - uPathSize), L"-%04u-%02u-%02u.log", _log_time.wYear, _log_time.wMonth, _log_time.wDay)) < MAX_PATH)
+				return true;
+		}
+	}
+	return false;
+}
+
+void CFileLog::AddToLog(const wchar_t* format, ...)
+{
+	va_list va;
+	va_start(va, format);
+	SYSTEMTIME _log_time;
+	wchar_t pBuff[FILE_LOG_ELEMENT_BUFFER_SIZE];
+	GetLocalTime(&_log_time);
+	unsigned int uLineIndex, uSize = (unsigned int)vswprintf_s(pBuff, (FILE_LOG_ELEMENT_BUFFER_SIZE - 2), format, va);
+	if(uSize < (FILE_LOG_ELEMENT_BUFFER_SIZE - 2))
+	{
+		pBuff[uSize] = 0x0D; uSize++;
+		pBuff[uSize] = 0x0A; uSize *= 2;
+
+		this->Enter();
+
+		if(!(uLineIndex = (this->log_data_counter++ % FILE_LOG_COUNT_TO_SAVE)))
+			this->Save();
+
+		memcpy(&this->log_line[uLineIndex].log_time, &_log_time, sizeof(SYSTEMTIME));
+		memcpy(this->log_line[uLineIndex].buff, pBuff, uSize);
+		this->log_line[uLineIndex].buff_size = uSize;
+
+		this->Leave();
+	}
+	va_end(va);
+}
+
+void CFileLog::Save()
+{
+	FILE* pFile;
+	wchar_t pBuff[96];
+	if(!_wfopen_s(&pFile, this->log_file_path, L"ab"))
+	{
+		fseek(pFile, 0, SEEK_END);
+		UINT32 uSize = (UINT32)ftell(pFile);
+		fseek(pFile, 0, SEEK_SET);
+
+		if(!uSize)
+		{
+			unsigned char Encoding[2] = { 0xFF, 0xFE };
+			fwrite(Encoding, 2, 1, pFile);
+		}
+
+		for(unsigned int i = 0; i < FILE_LOG_COUNT_TO_SAVE; i++)
+		{
+			if(this->log_line[i].buff_size)
+			{
+				unsigned int uSize = (unsigned int)swprintf_s(pBuff, 96, L"%02u/%02u/%04u %02u:%02u:%02u.%03u, ", this->log_line[i].log_time.wMonth, this->log_line[i].log_time.wDay, this->log_line[i].log_time.wYear, this->log_line[i].log_time.wHour, this->log_line[i].log_time.wMinute, this->log_line[i].log_time.wSecond, this->log_line[i].log_time.wMilliseconds);
+				if(uSize < 96)
+				{
+					fwrite(pBuff, (uSize * 2), 1, pFile);
+					fwrite(this->log_line[i].buff, this->log_line[i].buff_size, 1, pFile);
+				}
+			}
+		}
+		fclose(pFile);
+	}
 }
 
 // =================================================================================================================
