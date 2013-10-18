@@ -4,8 +4,6 @@ struct L2Server
 {
 	//L2Server Protocol
 	short srvProtocol;
-	//Test Value
-	int TestValue;
 };
 
 class CVars
@@ -14,8 +12,7 @@ public:
 	CVars(void);
 	~CVars(void);
 	void Initialize(void);
-	char* GetServerProtocol(void);
-	int& GetTestValue(void);
+	const char* GetServerProtocol(void);
 protected:
 	bool FileExists(const char* file_name);
 private:
@@ -23,5 +20,6 @@ private:
 	void CreateIniFile(void);
 	void LoadVars(void);
 	L2Server* iServer;
+	char ServerProtocol[0x11];
 };
 

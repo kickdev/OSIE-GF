@@ -10,7 +10,9 @@ public:
 
 	/* 090 */ virtual void SetAddress(in_addr ip) { this->client_ip = ip; };
 	/* 098 */ virtual in_addr GetAddress() { return this->client_ip; };
-	/* 0A0 */ 
+	/* 0A0 */ void Send(const char* format, ...);
+	/* 0A8 */ void Close();
+	/* 0B0 */
 
 	/* 00B0 */ unsigned int _uUnkVal00B0[2];
 	/* 00B8 */ in_addr client_ip;

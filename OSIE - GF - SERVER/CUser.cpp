@@ -17,7 +17,7 @@ CUser* __cdecl CUser::UserDestructor(CUser* pUser, bool bIsMemoryFreeUsed)
 	return f(pUser, bIsMemoryFreeUsed);
 }
 
-bool __thiscall CUser::_DeleteItemInInventoryBeforeCommit(CUser* pUser, UINT32 uItemId, UINT64 uItemCount)
+bool __cdecl CUser::_DeleteItemInInventoryBeforeCommit(CUser* pUser, UINT32 uItemId, UINT64 uItemCount)
 {
 	Guard(__WFUNCSIG__);
 
@@ -38,3 +38,24 @@ bool __thiscall CUser::_DeleteItemInInventoryBeforeCommit(CUser* pUser, UINT32 u
 }
 
 //
+void __thiscall CUser::EnterWorld()
+{
+	Guard(__WFUNCSIG__);
+
+	typedef void (__thiscall *t)(CUser*);
+	t f = (t)0x008CF0E4;
+	
+	if (true) // Если это нормальный игрок ввойти
+	{
+		f(this);
+		this->UserExt.bIsEnterIntoWorld = true;
+		this->UserExt.bIsEnteredIntoWorld = true;
+	}
+	else // Если нет отключить от сервера
+	{
+		this->UserExt.bIsEnterIntoWorld = false;
+		this->UserExt.bIsEnteredIntoWorld = false;
+	}
+
+	UnGuard();
+}

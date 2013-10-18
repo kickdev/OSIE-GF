@@ -122,7 +122,7 @@ public:
 	/* 828 */ virtual __int64 _vfunc828() { return NULL; };
 	/* 830 */ virtual __int64 _vfunc830() { return NULL; };
 	/* 838 */ virtual __int64 _vfunc838() { return NULL; };
-	/* 840 */ virtual bool DeleteItemInInventoryBeforeCommit(UINT32 uVar1, UINT32 uVar2) { return false; };
+	/* 840 */ virtual bool DeleteItemInInventoryBeforeCommit(UINT32 uItemId, UINT32 uItemCount) { return false; };
 	/* 848 */ virtual __int64 _vfunc848() { return NULL; };
 	/* 850 */ virtual __int64 _vfunc850() { return NULL; };
 	/* 858 */ virtual __int64 _vfunc858() { return NULL; };

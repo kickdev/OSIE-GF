@@ -16,7 +16,6 @@ void ShowLog(void* pVoid, int nParam, const char* _str, ...)
 	Guard(__WFUNCSIG__);
 
 	g_Log->Add(CLog::blue, "L2Server Start and Patched by OSI Extender");
-	g_Log->Add(CLog::red, "Test vars = %d", g_Vars.GetTestValue());
 
 	UnGuard();
 }
@@ -408,7 +407,7 @@ void DllInitializer(HMODULE hDllModule, DWORD ul_reason_for_call)
 
 					WriteInstructionCall(0x6B3423, (UINT32)ShowLog);			//copyrite DevExt
 					//L2Server Protocol start
-					WriteMemoryBYTES(0xC6BD83, (void *)g_Vars.GetServerProtocol(), strlen(g_Vars.GetServerProtocol()));
+					WriteMemoryBYTES(0xC6BD83, (void *)g_Vars.GetServerProtocol(), (int)strlen(g_Vars.GetServerProtocol()));
 					//L2Server Protocol end
 
 					CloseHandle(g_Server);

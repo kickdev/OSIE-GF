@@ -112,7 +112,9 @@ public:
 	/* C88 */ virtual __int64 _vfuncC88() { return NULL; };
 	/* C90 */
 
-	/* 840 */ static bool __thiscall _DeleteItemInInventoryBeforeCommit(CUser* pUser, UINT32 uItemId, UINT64 uItemCount);
+	/* 840 */ static bool __cdecl _DeleteItemInInventoryBeforeCommit(CUser* pUser, UINT32 uItemId, UINT64 uItemCount);
+
+	void __thiscall EnterWorld();
 
 	bool IsNowTrade()
 	{
@@ -120,6 +122,7 @@ public:
 		t f = (t)0x008A4E8C;
 		return f(this);
 	};
+
 	CTrade* GetTrade()
 	{
 		typedef CTrade* (__thiscall *t)(CUser*);
