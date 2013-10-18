@@ -33,8 +33,8 @@ void CVars::CreateIniFile(void)
 {
 	CIniFile::Create(this->config_file);
 	CIniFile::SetValue("Protocol", "746", "L2Server", this->config_file);
-	CIniFile::SetSectionComments("# Настройки L2Server", "L2Server", this->config_file);
-	CIniFile::SetRecordComments("# Протокол L2Server\n","Protocol","L2Server", this->config_file);
+	CIniFile::SetSectionComments("# Settings L2Server", "L2Server", this->config_file);
+	CIniFile::SetRecordComments("# Protocol L2Server\n","Protocol","L2Server", this->config_file);
 }
 
 void CVars::LoadVars(void)

@@ -426,7 +426,7 @@ void DllInitializer(HMODULE hDllModule, DWORD ul_reason_for_call)
 			}
 		}
 		else
-		{	//в некоторых случаях дллка грузится выше 0x80000000 оффсета, что не дает возможности применять E8/E9 7F FF FF FF прыжки
+		{
 			Msg(L"LoadError", L"[%s]\n dll loaded on bad allocation address (win7 fix)", __WFILE__);
 			ExitProcess(1);
 		}
@@ -470,6 +470,5 @@ unsigned char* Disassemble(const unsigned char* buf, const char* format, ...)
 	t f = (t)0x0068EA18;
 	unsigned char* pReturn = f(buf, format, va);
 	va_end(va);
-	UnGuard();
-	return pReturn;
+	UnGuardRet(pReturn);
 }

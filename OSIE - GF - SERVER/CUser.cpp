@@ -45,13 +45,13 @@ void __thiscall CUser::EnterWorld()
 	typedef void (__thiscall *t)(CUser*);
 	t f = (t)0x008CF0E4;
 	
-	if (true) // Если это нормальный игрок ввойти
+	if (true) // Check User
 	{
 		f(this);
 		this->UserExt.bIsEnterIntoWorld = true;
 		this->UserExt.bIsEnteredIntoWorld = true;
 	}
-	else // Если нет отключить от сервера
+	else // Disconnect
 	{
 		this->UserExt.bIsEnterIntoWorld = false;
 		this->UserExt.bIsEnteredIntoWorld = false;
