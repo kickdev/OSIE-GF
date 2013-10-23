@@ -20,3 +20,33 @@ CUserSocket* __cdecl CUserSocket::UserSocketDestructor(CUserSocket* pUserSocket,
 }
 
 //
+void __thiscall CUserSocket::SendSystemMessage(const wchar_t* pSender, const wchar_t* pMsg)
+{
+	typedef void (__thiscall *t)(CUserSocket*, const wchar_t*, const wchar_t*);
+	t f = (t)0x009244F0;
+	f(this, pSender, pMsg);
+}
+
+void __thiscall CUserSocket::BindUser(CUser* pUser)
+{
+	typedef void (__thiscall *t)(CUserSocket*, CUser*);
+	t f = (t)0x009246DC;
+	f(this, pUser);
+}
+
+void __cdecl CUserSocket::_BindUser(CUserSocket* pUserSocket, CUser* pUser)
+{
+	Guard(__WFUNCSIG__);
+
+	if (!pUser->UserOSIE.CheckRace())
+	{
+		pUserSocket->Close();
+#ifdef L2SERVER_DEBUG
+		g_Log->Add(CLog::blue, L"[OSIE] Kill race Kamael user name - %s", pUser->UserOSIE.pCharName);
+#endif
+	}
+
+	pUserSocket->BindUser(pUser);
+
+	UnGuard();
+}

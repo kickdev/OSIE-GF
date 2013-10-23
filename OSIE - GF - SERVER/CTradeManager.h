@@ -14,7 +14,7 @@ public:
 	CObjectSP* GetTrade(CObjectSP* pObjectSP, UINT32 uTradeSID)
 	{
 		typedef CObjectSP* (__thiscall *t)(CTradeManager*, CObjectSP*, UINT32);
-		t f = (t)0x00000000;
+		t f = (t)0x00872A48;
 		return f(this, pObjectSP, uTradeSID);
 	};
 

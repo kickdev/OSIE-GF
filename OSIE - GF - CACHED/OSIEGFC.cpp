@@ -4,15 +4,34 @@ extern HANDLE g_Server;
 CLog* g_Log = (CLog*)0x01962620;
 CUserDb* g_UserDb = (CUserDb*)0x0273A1D0;
 
+void ShowLogOSIE(void* pVoid, int nParam, const char* _str, ...)
+{
+	Guard(__WFUNCSIG__);
+	va_list va;
+	va_start(va, _str);
+	g_Log->Add(CLog::blue, "[OSIE] L2Cached Start and Patched by OSI Extender");
+	g_Log->Add((CLog::LogType)nParam, _str, va);
+	va_end(va);
+	UnGuard();
+}
+
 void L2GFExtL2MFix()
 {
 	NOPMemory(0x4623C9, 5); //disable send mail to nc
 	NOPMemory(0x463066, 5); //disable send mail to nc
 }
 
+void OSIEFix()
+{
+	
+}
+
 void DllInitializer(HMODULE hDllModule, DWORD ul_reason_for_call)
 {
 //	Msg(L"Load", L"[%s]\n DbgBreak", __WFILE__);
+
+	CreateDirectoryA("CrashLogsOSIE", NULL);
+	system("move *.bak CrashLogsOSIE");
 
 	if(ul_reason_for_call == DLL_PROCESS_ATTACH)
 	{
@@ -42,6 +61,10 @@ void DllInitializer(HMODULE hDllModule, DWORD ul_reason_for_call)
 					L2GFExtL2MFix(); //fixes from L2GFExt L2M.RU Project 
 
 //					Msg(L"Load", L"[%s]\n complete loaded", __WFILE__);
+					
+					WriteInstructionCall(0x44C28D, (UINT32)ShowLogOSIE);
+
+					OSIEFix();
 
 					CloseHandle(g_Server);
 					g_Server = NULL;

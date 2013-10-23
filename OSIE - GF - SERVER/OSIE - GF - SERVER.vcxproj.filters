@@ -106,6 +106,12 @@
     <ClCompile Include="Vars.cpp">
       <Filter>Main Files</Filter>
     </ClCompile>
+    <ClCompile Include="CUserOSIE.cpp">
+      <Filter>Server Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="CSocketPacket.cpp">
+      <Filter>Server Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Config.h">

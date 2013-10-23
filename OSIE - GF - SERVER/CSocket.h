@@ -30,3 +30,5 @@ public:
 
 CompileTimeOffsetCheck(CSocket, client_ip, 0x00B8);
 CompileTimeSizeCheck(CSocket, 0x0100);
+
+bool __cdecl _CharacterCreatePacket(CSocket* pSocket, unsigned char* packet);

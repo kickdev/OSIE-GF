@@ -33,7 +33,7 @@
 #define L2SERVER_DEBUG_PACKET_DELAY 1
 
 #define L2SERVER_USE_REPORT_MIN_DELAY_SYSTEM 1
-#define L2SERVER_INCOMING_SHOW_PACKET_INFO 1
+//#define L2SERVER_INCOMING_SHOW_PACKET_INFO 1
 
 #define L2SERVER_L2M_TEST_SOCKET 1
 
@@ -74,4 +74,4 @@ extern CLog* g_Log;
 extern CTradeManager* g_TradeManager;
 
 //
-extern CVars g_Vars; // global params
+extern CVars* g_Vars; // global params

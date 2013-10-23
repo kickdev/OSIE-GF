@@ -7,7 +7,7 @@ class CUser : public CMemoryObject
 public:
 	CUser() {};
 	~CUser() {};
-
+	
 	UINT32 GetItemWare(UINT32 uItemDbId) //item_id to item_obj_id ? to_type ?
 	{
 		typedef UINT32 (__thiscall *t)(CUser*, UINT32);

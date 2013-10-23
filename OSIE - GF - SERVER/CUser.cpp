@@ -6,11 +6,13 @@ CUser* __cdecl CUser::UserConstructor(CUser* pUser, wchar_t* pCharName, wchar_t*
 	t f = (t)0x008D435C;
 	CUser* pReturn = f(pUser, pCharName, pAccName, uCharId, uAccountId, uPledgeId, uBuilder, uGender, uRace, uClass, uWorld, nPosX, nPosY, nPosZ, fHP, fMP, uSp, uExp, uLevel, nAlign, uPK, uPvP, uPKPardon, uUnk1, uUnk2, uUnk3, uUnk4, uUnk5, uUnk6, uUnk7, uUnk8, uUnk9, pCharTitle, pUnkBuff, uUnk10, uUnk11, uUnk12, uUnk13, uUnk14, uUnk15, uUnk16, uUnk17, uUnk18, uUnk19, uUnk20, uUnk21, uUnk22, bUnk23);
 	new (&pUser->UserExt) CUserExt();
+	new (&pUser->UserOSIE) CUserOSIE(pCharName, pAccName, uCharId, uAccountId, uPledgeId, uBuilder, uGender, uRace, uClass, uWorld, nPosX, nPosY, nPosZ, fHP, fMP, uSp, uExp, uLevel, nAlign, uPK, uPvP, uPKPardon, uUnk1, uUnk2, uUnk3, uUnk4, uUnk5, uUnk6, uUnk7, uUnk8, uUnk9, pCharTitle, pUnkBuff, uUnk10, uUnk11, uUnk12, uUnk13, uUnk14, uUnk15, uUnk16, uUnk17, uUnk18, uUnk19, uUnk20, uUnk21, uUnk22, bUnk23);
 	return pReturn;
 }
 
 CUser* __cdecl CUser::UserDestructor(CUser* pUser, bool bIsMemoryFreeUsed)
 {
+	pUser->UserOSIE.~CUserOSIE();
 	pUser->UserExt.~CUserExt();
 	typedef CUser* (__cdecl *t)(CUser*, bool);
 	t f = (t)0x008D33C0;
@@ -38,24 +40,35 @@ bool __cdecl CUser::_DeleteItemInInventoryBeforeCommit(CUser* pUser, UINT32 uIte
 }
 
 //
+
+bool __thiscall CUser::IsNowTrade()
+{
+	typedef bool (__thiscall *t)(CUser*);
+	t f = (t)0x008A4E8C;
+	return f(this);
+};
+
+CTrade* __thiscall CUser::GetTrade()
+{
+	typedef CTrade* (__thiscall *t)(CUser*);
+	t f = (t)0x008A0DE4;
+	return f(this);
+};
+
 void __thiscall CUser::EnterWorld()
+{
+	typedef void (__thiscall *t)(CUser*);
+	t f = (t)0x008CF0E4;
+	f(this);
+}
+
+//static
+void __cdecl CUser::_UserEnterWorld(CUser* pUser)
 {
 	Guard(__WFUNCSIG__);
 
-	typedef void (__thiscall *t)(CUser*);
-	t f = (t)0x008CF0E4;
-	
-	if (true) // Check User
-	{
-		f(this);
-		this->UserExt.bIsEnterIntoWorld = true;
-		this->UserExt.bIsEnteredIntoWorld = true;
-	}
-	else // Disconnect
-	{
-		this->UserExt.bIsEnterIntoWorld = false;
-		this->UserExt.bIsEnteredIntoWorld = false;
-	}
+	pUser->EnterWorld();
 
 	UnGuard();
 }
+

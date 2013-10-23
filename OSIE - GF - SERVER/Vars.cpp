@@ -1,12 +1,9 @@
 #include "stdafx.h"
 #include "Vars.h"
 
-extern CVars g_Vars;
-CVars g_Vars;
 
 CVars::CVars(void)
 {
-	ZeroMemory(this->ServerProtocol, 11);
 	this->config_file = "l2config.ini";
 }
 
@@ -33,8 +30,6 @@ void CVars::CreateIniFile(void)
 {
 	CIniFile::Create(this->config_file);
 	CIniFile::SetValue("Protocol", "746", "L2Server", this->config_file);
-	CIniFile::SetSectionComments("# Settings L2Server", "L2Server", this->config_file);
-	CIniFile::SetRecordComments("# Protocol L2Server\n","Protocol","L2Server", this->config_file);
 }
 
 void CVars::LoadVars(void)
@@ -42,7 +37,7 @@ void CVars::LoadVars(void)
 	if (CIniFile::SectionExists("L2Server", this->config_file)) 
 	{
 		if (CIniFile::RecordExists("Protocol", "L2Server", this->config_file))
-			this->iServer->srvProtocol = (short)CIniFile::GetIntValue("Protocol", "L2Server", this->config_file);
+			this->iServer->srvProtocol = CIniFile::GetIntValue("Protocol", "L2Server", this->config_file);
 		else
 			this->iServer->srvProtocol = 746;
 	}
@@ -52,8 +47,11 @@ void CVars::LoadVars(void)
 	}
 }
 
-const char* CVars::GetServerProtocol(void)
+string CVars::GetServerProtocol(void)
 {
-	sprintf_s(this->ServerProtocol, 0x11, "$Revision: %d $", (this->iServer->srvProtocol ? this->iServer->srvProtocol : 746));
+	char buff[20];
+	ZeroMemory(buff, 20);
+	_itoa_s(this->iServer->srvProtocol, buff, 20, 10);
+	this->ServerProtocol = string("$Revision: ") + string(buff) + string(" $");
 	return this->ServerProtocol;
 }

@@ -3,8 +3,8 @@
 //
 void CSocket::Send(const char * format, ...)
 {
-	typedef void (__fastcall *t) (CSocket * pSocket, const char * format, ...); 
-	t f = (t)0x00858A80; //test adress C4
+	typedef void (__thiscall *t) (CSocket * pSocket, const char * format, va_list); 
+	t f = (t)0x00858A80; //test adress
 	va_list vl;	
 	va_start(vl, format);	
 	f(this, format, vl);	
@@ -14,7 +14,7 @@ void CSocket::Send(const char * format, ...)
 void CSocket::Close()
 {
 	typedef void (__thiscall *t) (CSocket * pSocket);
-	t f = (t)0x0061E540;  //test adress C4
+	t f = (t)0x004564D8;
 	this->uSocketStatus = 2;
 	f(this);
 }

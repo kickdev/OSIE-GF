@@ -86,14 +86,12 @@ public:
 	static UINT64 __cdecl InGamePacketHandler2(CUserSocket* pUserSocket, const BYTE* packet, BYTE uOpcode);
 	static bool __cdecl GamePacketExHandler2(CUserSocket* pUserSocket, const BYTE* packet, WORD uOpcode);
 
-	void SendSystemMessage(const wchar_t* pSender, const wchar_t* pMsg)
-	{
-		typedef void (__thiscall *t)(CUserSocket*, const wchar_t*, const wchar_t*);
-		t f = (t)0x009244F0;
-		f(this, pSender, pMsg);
-	};
+	void __thiscall SendSystemMessage(const wchar_t* pSender, const wchar_t* pMsg);
+	void __thiscall BindUser(CUser* pUser);
 
-	/* 0A0 */ virtual CUser* User() { return NULL; };
+	static void __cdecl _BindUser(CUserSocket* pUserSocket, CUser* pUser);
+
+	/* 0A0 */ virtual CUser* User() { return this->pUser; };
 	/* 0A8 */ virtual __int64 _vfunc0A8() { return NULL; };
 	/* 0B0 */ 
 

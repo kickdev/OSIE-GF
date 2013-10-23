@@ -1,10 +1,12 @@
 #include "stdafx.h"
-
+//патч http://rghost.ru/private/49610156/5b36d9ffd339959934aadd40bf9c4ba1
+//Размеры переменных http://msdn.microsoft.com/ru-ru/library/s3f49ktz.aspx
 extern HANDLE g_Server;
 CLog* g_Log = (CLog*)0x0913EDD0;
 CTradeManager* g_TradeManager = (CTradeManager*)0x11F3C9C0;
 CFileLog g_AdminCmdLog = {0};
 GFS g_GFS;
+CVars* g_Vars = new CVars();
 
 #ifdef L2SERVER_USE_REPORT_MIN_DELAY_SYSTEM
 DWORD g_MinPacketDelay[256] = {0};
@@ -14,9 +16,11 @@ DWORD g_MinPacketDelayEx[256] = {0};
 void ShowLog(void* pVoid, int nParam, const char* _str, ...)
 {
 	Guard(__WFUNCSIG__);
-
-	g_Log->Add(CLog::blue, "L2Server Start and Patched by OSI Extender");
-
+	va_list va;
+	va_start(va, _str);
+	g_Log->Add(CLog::blue, "[OSIE] L2Server Start and Patched by OSI Extender");
+	g_Log->Add((CLog::LogType)nParam, _str, va);
+	va_end(va);
 	UnGuard();
 }
 
@@ -156,7 +160,11 @@ bool __cdecl _HtmlCmdObserver(CUserSocket* pUserSocket, CUser* pUser, const wcha
 	}
 	else
 	{
+
+#ifdef L2SERVER_DEBUG
 		g_Log->Add(CLog::red, L"(FIXED BY L2M.RU) user [%s] try hack observer", pUser->SD->wszName);
+#endif
+
 		bReturn = false;
 	}
 
@@ -167,7 +175,9 @@ void __cdecl CPledge_CheckByPowerGradeId_Log_Fix(CPledge* pPledge, UINT32 uPower
 {
 	Guard(__WFUNCSIG__);
 
+#ifdef L2SERVER_DEBUG
 	g_Log->Add(CLog::red, L"(FIXED BY L2M.RU) Invalid Pledge Power GradeId %d, PledgeID %d, PledgeName [%s]", uPowerGradeId, pPledge->SD->uPledgeSID, pPledge->SD->wszClanName);
+#endif
 
 	UnGuard();
 }
@@ -308,9 +318,25 @@ void L2GFExtL2MFix()
 	WriteMemoryQWORD(0xC543F8, (UINT64)CUser::_DeleteItemInInventoryBeforeCommit);			//
 }
 
+void OSIEFix()
+{
+	WriteMemoryQWORD(0xC54400, (UINT64)CUser::_UserEnterWorld); //
+	WriteInstructionCall(0x5E1B30, (UINT32)CUserSocket::_BindUser); // Kill kamael race
+	// Changing the Number of Initial Classes from 11 to 9.
+	WriteMemoryBYTE(0x925363, 0x09); // (old 0x0B)
+	// Deleting Newer Initial Classes
+	WriteMemoryDWORD(0xC6BBEC, 0x00); // Male Kamael (old 0x7B)
+	WriteMemoryDWORD(0xC6BBF0, 0x00); // Female Kamael (old 0x7C)
+
+	WriteInstruction(0xA2D776, (UINT32)_CharacterCreatePacket, 0x05);
+}
+
 void DllInitializer(HMODULE hDllModule, DWORD ul_reason_for_call)
 {
 //	Msg(L"Load", L"[%s]\n DbgBreak", __WFILE__);
+
+	CreateDirectoryA("CrashLogsOSIE", NULL);
+	system("move *.bak CrashLogsOSIE");
 
 	if(ul_reason_for_call == DLL_PROCESS_ATTACH)
 	{
@@ -403,12 +429,15 @@ void DllInitializer(HMODULE hDllModule, DWORD ul_reason_for_call)
 
 					//Msg(L"Load", L"[%s]\n complete loaded, 0x%08X", __WFILE__, *((UINT32*)0x5E1869));
 
-					g_Vars.Initialize(); // initialization ini file
+					g_Vars->Initialize(); // initialization ini file
 
 					WriteInstructionCall(0x6B3423, (UINT32)ShowLog);			//copyrite DevExt
 					//L2Server Protocol start
-					WriteMemoryBYTES(0xC6BD83, (void *)g_Vars.GetServerProtocol(), (int)strlen(g_Vars.GetServerProtocol()));
+					NULLMemory(0xC6BD78, 16);
+					WriteMemoryBYTES(0xC6BD78, (void*)g_Vars->GetServerProtocol().c_str(), (int)g_Vars->GetServerProtocol().size());
 					//L2Server Protocol end
+
+					OSIEFix();
 
 					CloseHandle(g_Server);
 					g_Server = NULL;

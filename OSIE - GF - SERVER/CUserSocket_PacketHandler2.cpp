@@ -144,6 +144,7 @@ UINT64 __cdecl CUserSocket::OutGamePacketHandler2(CUserSocket* pUserSocket, cons
 		case 0x0C: //CharacterCreate	len ?
 		case 0x0D: //CharacterDelete	len ?
 		case 0x13: //NewCharacter		len ?
+		case 0x0F: //MoveBackwardToLocation	len ? (when char logout)
 		case 0x59: //ValidatePosition	len ? (when char logout)
 		case 0x7B: //CharacterRestore	len ?
 			{

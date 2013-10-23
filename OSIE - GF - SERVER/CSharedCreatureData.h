@@ -5,8 +5,8 @@
 class CSharedCreatureData
 {
 public:
-	CSharedCreatureData() {};
-	~CSharedCreatureData() {};
+	CSharedCreatureData();
+	~CSharedCreatureData();
 
 	/* 0000 */ unsigned int _uUnkVal0000[41];
 	/* 00A4 */ WCHAR wszName[25];

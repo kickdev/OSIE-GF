@@ -13,6 +13,9 @@ void DllInitializer(HMODULE hDllModule, DWORD ul_reason_for_call)
 {
 //	Msg(L"Load", L"[%s]\n DbgBreak", __WFILE__);
 
+	CreateDirectoryA("CrashLogsOSIE", NULL);
+	system("move *.bak CrashLogsOSIE");
+
 	if(ul_reason_for_call == DLL_PROCESS_ATTACH)
 	{
 		if(((UINT64)hDllModule) < 0x7E000000 && ((UINT64)(&g_Server)) < 0x7F000000)
