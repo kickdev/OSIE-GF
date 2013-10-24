@@ -36,9 +36,12 @@ public:
 	/* 011C */ UINT32 uPvP;
 	/* 0120 */ UINT32 uPKPardon;
 	/* 0124 */ WCHAR pCharTitle[50];
-	/* 0188 */ 
+
+	/* 0188 */ CUserSocket* socket;
+	/* 0190 */
 
 	BOOL CheckRace();
+	CUserSocket* GetUserSocket();
 };
 
 class CUserExt
@@ -152,13 +155,15 @@ public:
 
 	/* 840 */ static bool __cdecl _DeleteItemInInventoryBeforeCommit(CUser* pUser, UINT32 uItemId, UINT64 uItemCount);
 	/* 841 */ static void __cdecl _UserEnterWorld(CUser* pUser);
-	/* 842 */ 
+	/* 842 */ static void __cdecl _Say(CUser* pUser, wchar_t* msg);
 
 	bool __thiscall IsNowTrade();
 
 	CTrade* __thiscall GetTrade();
 
 	void __thiscall EnterWorld();
+
+	void __thiscall Say(wchar_t* msg);
 
 	/* 1CB0 */ unsigned int _uUnkVal1CB0[1389];
 	/* 3264 */ CYieldLock html_cs;

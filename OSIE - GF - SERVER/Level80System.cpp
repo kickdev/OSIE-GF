@@ -13,8 +13,8 @@ void CLevel80System::SetMaxLevel(UINT32 uMaxLevel)
 	 * .text:0000000000562C9D                 mov     ebp, 50h // sub level 80
 	 * .text:0000000000562CA4                 mov     ebp, 63h // npc level 99
 	 */
-	WriteInstruction(0x562C8B, uMaxLevel, 0xBD); //Change main class max  level
-
+	WriteMemoryBYTE(0x562C8C, (BYTE)uMaxLevel); //Change main class max  level
+	
 	//.text:00000000004877BE                 cmp     rax, 54h // level 85 - 1 = 84
 	WriteMemoryBYTE(0x4877C1, (BYTE)(uMaxLevel - 1));
 

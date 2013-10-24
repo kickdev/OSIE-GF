@@ -62,6 +62,13 @@ void __thiscall CUser::EnterWorld()
 	f(this);
 }
 
+void __thiscall CUser::Say(wchar_t* msg)
+{
+	typedef void (__thiscall *t)(CUser*, wchar_t*);
+	t f = (t)0x008AB200;
+	f(this, msg);
+}
+
 //static
 void __cdecl CUser::_UserEnterWorld(CUser* pUser)
 {
@@ -69,6 +76,21 @@ void __cdecl CUser::_UserEnterWorld(CUser* pUser)
 
 	pUser->EnterWorld();
 
+	pUser->UserOSIE.GetUserSocket()->SendSystemMessage(L"[OSIE]", L"Test msg");
+	
 	UnGuard();
 }
 
+void __cdecl CUser::_Say(CUser* pUser, wchar_t* msg)
+{
+	Guard(__WFUNCSIG__);
+
+	pUser->Say(msg);
+
+	if (wcscmp(msg, L"HelloWorld") == 0)
+	{
+		pUser->UserOSIE.GetUserSocket()->SendSystemMessage(L"[OSIE]", L"Hello!");
+	}
+
+	UnGuard();
+}

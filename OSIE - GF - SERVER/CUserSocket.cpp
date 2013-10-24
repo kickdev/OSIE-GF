@@ -48,5 +48,10 @@ void __cdecl CUserSocket::_BindUser(CUserSocket* pUserSocket, CUser* pUser)
 
 	pUserSocket->BindUser(pUser);
 
+	if (pUserSocket->pUser == pUser)
+		g_Log->Add(CLog::blue, L"[OSIE] Test pUserSocket->pUser and pUser - %s", pUser->UserOSIE.pCharName);
+
+	pUser->UserOSIE.socket = pUserSocket;
+
 	UnGuard();
 }

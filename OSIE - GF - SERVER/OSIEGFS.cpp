@@ -335,6 +335,8 @@ void OSIEFix()
 
 	//Change max level to 80
 	CLevel80System::Initialize();
+
+	WriteMemoryQWORD(0xC54088, (UINT64)CUser::_Say); //
 }
 
 void DllInitializer(HMODULE hDllModule, DWORD ul_reason_for_call)
