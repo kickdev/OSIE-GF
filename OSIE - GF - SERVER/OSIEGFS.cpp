@@ -1,6 +1,7 @@
 #include "stdafx.h"
-//патч http://rghost.ru/private/49610156/5b36d9ffd339959934aadd40bf9c4ba1
-//Размеры переменных http://msdn.microsoft.com/ru-ru/library/s3f49ktz.aspx
+//patch http://rghost.ru/private/49610156/5b36d9ffd339959934aadd40bf9c4ba1
+//size variable http://msdn.microsoft.com/ru-ru/library/s3f49ktz.aspx
+//opcodes asm http://ref.x86asm.net/coder32.html
 extern HANDLE g_Server;
 CLog* g_Log = (CLog*)0x0913EDD0;
 CTradeManager* g_TradeManager = (CTradeManager*)0x11F3C9C0;
@@ -322,13 +323,18 @@ void OSIEFix()
 {
 	WriteMemoryQWORD(0xC54400, (UINT64)CUser::_UserEnterWorld); //
 	WriteInstructionCall(0x5E1B30, (UINT32)CUserSocket::_BindUser); // Kill kamael race
+
 	// Changing the Number of Initial Classes from 11 to 9.
 	WriteMemoryBYTE(0x925363, 0x09); // (old 0x0B)
+
 	// Deleting Newer Initial Classes
 	WriteMemoryDWORD(0xC6BBEC, 0x00); // Male Kamael (old 0x7B)
 	WriteMemoryDWORD(0xC6BBF0, 0x00); // Female Kamael (old 0x7C)
 
 	WriteInstruction(0xA2D776, (UINT32)_CharacterCreatePacket, 0x05);
+
+	//Change max level to 80
+	CLevel80System::Initialize();
 }
 
 void DllInitializer(HMODULE hDllModule, DWORD ul_reason_for_call)

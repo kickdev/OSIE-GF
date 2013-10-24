@@ -66,6 +66,7 @@
 //#include "Resource.h"
 
 #include "Vars.h"
+#include "Level80System.h"
 
 //blablabla...
 

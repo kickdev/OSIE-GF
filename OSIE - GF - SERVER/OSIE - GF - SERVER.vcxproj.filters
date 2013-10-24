@@ -112,6 +112,9 @@
     <ClCompile Include="CSocketPacket.cpp">
       <Filter>Server Objects</Filter>
     </ClCompile>
+    <ClCompile Include="Level80System.cpp">
+      <Filter>Server Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Config.h">
@@ -203,6 +206,9 @@
     </ClInclude>
     <ClInclude Include="Vars.h">
       <Filter>Main Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Level80System.h">
+      <Filter>Server Objects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
