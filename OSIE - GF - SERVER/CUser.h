@@ -4,46 +4,6 @@
 
 class CUser;
 
-class CUserOSIE
-{
-public:
-	CUserOSIE();
-	CUserOSIE(wchar_t* pCharName, wchar_t* pAccName, unsigned int uCharId, unsigned int uAccountId, unsigned int uPledgeId, unsigned int uBuilder, unsigned int uGender, unsigned int uRace, unsigned int uClass, unsigned int uWorld, int nPosX, int nPosY, int nPosZ, double fHP, double fMP, unsigned int uSp, unsigned __int64 uExp, unsigned int uLevel, int nAlign, unsigned int uPK, unsigned int uPvP, unsigned int uPKPardon, unsigned int uUnk1, unsigned int uUnk2, unsigned int uUnk3, unsigned int uUnk4, unsigned int uUnk5, unsigned int uUnk6, unsigned int uUnk7, unsigned int uUnk8, unsigned int uUnk9, wchar_t* pCharTitle, unsigned char* pUnkBuff, unsigned int uUnk10, unsigned int uUnk11, unsigned int uUnk12, unsigned int uUnk13, unsigned int uUnk14, unsigned int uUnk15, unsigned int uUnk16, unsigned int uUnk17, unsigned int uUnk18, unsigned int uUnk19, unsigned int uUnk20, unsigned int uUnk21, unsigned int uUnk22, bool bUnk23);
-	~CUserOSIE();
-
-	CUser* GetUser();
-
-	/* 0000 */ WCHAR pCharName[50];
-	/* 0064 */ WCHAR pAccName[50];
-	/* 00C8 */ UINT32 uCharId;
-	/* 00CC */ UINT32 uAccountId;
-	/* 00D0 */ UINT32 uPledgeId;
-	/* 00D4 */ UINT32 uBuilder;
-	/* 00D8 */ UINT32 uGender;
-	/* 00DC */ UINT32 uRace;
-	/* 00E0 */ UINT32 uClass;
-	/* 00E4 */ UINT32 uWorld;
-	/* 00E8 */ int nPosX;
-	/* 00EC */ int nPosY;
-	/* 00F0 */ int nPosZ;
-	/* 00F4 */ double fHP;
-	/* 00FC */ double fMP;
-	/* 0104 */ UINT32 uSp;
-	/* 0108 */ UINT64 uExp;
-	/* 0110 */ UINT32 uLevel;
-	/* 0114 */ int nAlign;
-	/* 0118 */ UINT32 uPK;
-	/* 011C */ UINT32 uPvP;
-	/* 0120 */ UINT32 uPKPardon;
-	/* 0124 */ WCHAR pCharTitle[50];
-
-	/* 0188 */ CUserSocket* socket;
-	/* 0190 */
-
-	BOOL CheckRace();
-	CUserSocket* GetUserSocket();
-};
-
 class CUserExt
 {
 public:
@@ -154,8 +114,12 @@ public:
 	/* C90 */
 
 	/* 840 */ static bool __cdecl _DeleteItemInInventoryBeforeCommit(CUser* pUser, UINT32 uItemId, UINT64 uItemCount);
-	/* 841 */ static void __cdecl _UserEnterWorld(CUser* pUser);
-	/* 842 */ static void __cdecl _Say(CUser* pUser, wchar_t* msg);
+
+	static void __cdecl _UserEnterWorld(CUser* pUser);
+	static void __cdecl _Say(CUser* pUser, wchar_t* msg);
+	static void __cdecl _ShowHTML(CUser* pUser, const wchar_t* HTML_NAME, const wchar_t* HTML_TEXT, unsigned int uClassID);
+	static void __cdecl ShowHTMLInitialize();
+	static __int64 __cdecl _ExpInc(CUser* pUser, __int64 exp, bool bVar);
 
 	bool __thiscall IsNowTrade();
 
@@ -164,6 +128,10 @@ public:
 	void __thiscall EnterWorld();
 
 	void __thiscall Say(wchar_t* msg);
+
+	void __thiscall ShowHTML(const wchar_t* HTML_NAME, const wchar_t* HTML_TEXT, unsigned int uClassID);
+
+	__int64 __thiscall ExpInc(__int64 exp, bool bVar);
 
 	/* 1CB0 */ unsigned int _uUnkVal1CB0[1389];
 	/* 3264 */ CYieldLock html_cs;
@@ -178,8 +146,8 @@ public:
 	/* 3360 */ UINT32 uTradeSID;
 	/* 3364 */ unsigned int _uUnkVal3364[427];
 	/* 3A10 */ CUserExt UserExt;
-	/* 3A18 */ CUserOSIE UserOSIE;
-	/* 3BA0 */
+	/* 3A18 */ CUserSocket* pUserSocket;
+	/* 3A20 */
 };
 
 #pragma pack(pop)
@@ -187,4 +155,3 @@ public:
 CompileTimeSizeCheck(RpgClubUserExt, 0x0008);
 CompileTimeOffsetCheck(CUser, uTradeSID, 0x3360);
 CompileTimeOffsetCheck(CUser, UserExt, 0x3A10);
-CompileTimeOffsetCheck(CUser, UserOSIE, 0x3A18);

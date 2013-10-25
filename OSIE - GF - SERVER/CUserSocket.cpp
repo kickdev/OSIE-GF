@@ -38,20 +38,20 @@ void __cdecl CUserSocket::_BindUser(CUserSocket* pUserSocket, CUser* pUser)
 {
 	Guard(__WFUNCSIG__);
 
-	if (!pUser->UserOSIE.CheckRace())
+	if (!(pUser->SD->nRace < 5 && pUser->SD->nRace >= 0))
 	{
 		pUserSocket->Close();
 #ifdef L2SERVER_DEBUG
-		g_Log->Add(CLog::blue, L"[OSIE] Kill race Kamael user name - %s", pUser->UserOSIE.pCharName);
+		g_Log->Add(CLog::blue, L"[OSIE] Kill race Kamael user name - %s", pUser->SD->wszName);
 #endif
 	}
 
 	pUserSocket->BindUser(pUser);
 
 	if (pUserSocket->pUser == pUser)
-		g_Log->Add(CLog::blue, L"[OSIE] Test pUserSocket->pUser and pUser - %s", pUser->UserOSIE.pCharName);
+		g_Log->Add(CLog::blue, L"[OSIE] Test pUserSocket->pUser and pUser - %s", pUser->SD->wszName);
 
-	pUser->UserOSIE.socket = pUserSocket;
+	pUserSocket->pUser->pUserSocket = pUserSocket;
 
 	UnGuard();
 }
