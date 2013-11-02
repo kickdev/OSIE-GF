@@ -9,6 +9,11 @@ void L2GFExtL2MFix()
 	NOPMemory(0x42CDBE, 5); //disable send mail to nc
 }
 
+void OSIEFix()
+{
+	CSharedCreatureData::ExtendCreatureSharedData();
+}
+
 void DllInitializer(HMODULE hDllModule, DWORD ul_reason_for_call)
 {
 //	Msg(L"Load", L"[%s]\n DbgBreak", __WFILE__);
@@ -27,6 +32,8 @@ void DllInitializer(HMODULE hDllModule, DWORD ul_reason_for_call)
 					L2GFExtL2MFix(); //fixes from L2GFExt L2M.RU Project 
 
 //					Msg(L"Load", L"[%s]\n complete loaded", __WFILE__);
+
+					OSIEFix();
 
 					CloseHandle(g_Server);
 					g_Server = NULL;

@@ -81,28 +81,27 @@ __int64 __thiscall CUser::ExpInc(__int64 exp, bool bVar)
 	return f(this, exp, bVar);
 }
 
+void __thiscall CUser::SetVitalityPoint(int nPoint, bool bVar)
+{
+	typedef void (__thiscall *t)(CUser*, int, bool);
+	t f = (t)0x0089C66C;
+	f(this, nPoint, bVar);
+}
+
+void __thiscall CUser::AddVitalityPoint(int nPoint, int nHowToGetPointType, bool bVar)
+{
+	typedef void (__thiscall *t)(CUser*, int, int, bool);
+	t f = (t)0x0089C918;
+	f(this, nPoint, nHowToGetPointType, bVar);
+}
+
 //static
 void __cdecl CUser::_UserEnterWorld(CUser* pUser)
 {
 	Guard(__WFUNCSIG__);
 
 	pUser->EnterWorld();
-
-	//pUser->pUserSocket->SendSystemMessage(L"[OSIE]", L"Test msg");
-	
-	wchar_t* buff = new wchar_t[20];
-	ZeroMemory(buff, 20);
-
-	_i64tow_s(pUser->SD->nExp, buff, 20, 10);
-
-	wstring data = wstring(L"EXP ") + wstring(buff);
-
-	_itow_s(pUser->SD->nSp, buff, 20, 10);
-
-	data += wstring(L", SP ") + wstring(buff);
-
-	pUser->pUserSocket->SendSystemMessage(L"[OSIE]", data.c_str());
-
+		
 	UnGuard();
 }
 
@@ -112,11 +111,6 @@ void __cdecl CUser::_Say(CUser* pUser, wchar_t* msg)
 
 	pUser->Say(msg);
 
-	if (wcscmp(msg, L"HelloWorld") == 0)
-	{
-		pUser->pUserSocket->SendSystemMessage(L"[OSIE]", L"Hello!");
-	}
-
 	UnGuard();
 }
 
@@ -125,8 +119,6 @@ void __cdecl CUser::_ShowHTML(CUser* pUser, const wchar_t* HTML_NAME, const wcha
 	Guard(__WFUNCSIG__);
 
 	pUser->ShowHTML(HTML_NAME, HTML_TEXT, uClassID);
-
-	g_Log->Add(CLog::red, L"OSIE %s %s %d", HTML_NAME, HTML_TEXT, uClassID);
 
 	UnGuard();
 }
@@ -159,22 +151,51 @@ __int64 __cdecl CUser::_ExpInc(CUser* pUser, __int64 exp, bool bVar)
 {
 	Guard(__WFUNCSIG__);
 	
-	if(pUser->SD->nExp + exp > 6299999999)
+	if(pUser->SD->uExp + exp > 6299999999)
 	{
-		exp = 6299999999 - pUser->SD->nExp;
+		exp = 6299999999 - pUser->SD->uExp;
 	}
 
 	__int64 ret = pUser->ExpInc(exp, bVar);
 
-	g_Log->Add(CLog::blue, L"_ExpInc enter(%I64d) return(%I64d) bVar(%d)", exp, ret, bVar);
-
-	wchar_t* buff = new wchar_t[0x400];
-	ZeroMemory(buff, 0x400);
-
-	swprintf_s(buff, 0x400, L"_ExpInc enter(%I64d) return(%I64d) bVar(%d)", exp, ret, bVar);
-	pUser->pUserSocket->SendSystemMessage(L"[OSIE]", buff);
-
-	delete[] buff;
-
 	UnGuardRet(ret);
+}
+
+void __cdecl CUser::_SetVitalityPoint(CUser* pUser, int nPoint, bool bVar)
+{
+	Guard(__WFUNCSIG__);
+
+	pUser->SetVitalityPoint(0, bVar);
+
+	g_Log->Add(CLog::blue, L"[OSIE] _SetVitalityPoint %d, %d", nPoint, bVar);
+
+	UnGuard();
+}
+
+void __cdecl CUser::_AddVitalityPoint(CUser* pUser, int nPoint, int nHowToGetPointType, bool bVar)
+{
+	Guard(__WFUNCSIG__);
+
+	pUser->AddVitalityPoint(0, nHowToGetPointType, bVar);
+
+	g_Log->Add(CLog::blue, L"[OSIE] _AddVitalityPoint %d, %d, %d", nPoint, nHowToGetPointType, bVar);
+
+	UnGuard();
+}
+
+void __cdecl CUser::VitalityPointInitialize()
+{
+	WriteInstructionCall(0x5E2048, (UINT32)CUser::_SetVitalityPoint);
+	WriteInstructionCall(0x89CA16, (UINT32)CUser::_SetVitalityPoint);
+
+	WriteInstructionCall(0x487FCE, (UINT32)CUser::_AddVitalityPoint);
+	WriteInstructionCall(0x73731E, (UINT32)CUser::_AddVitalityPoint);
+	WriteInstructionCall(0x75CAF2, (UINT32)CUser::_AddVitalityPoint);
+	WriteInstructionCall(0x75EBB6, (UINT32)CUser::_AddVitalityPoint);
+	WriteInstructionCall(0x75ECFA, (UINT32)CUser::_AddVitalityPoint);
+	WriteInstructionCall(0x760700, (UINT32)CUser::_AddVitalityPoint);
+	WriteInstructionCall(0x83AE20, (UINT32)CUser::_AddVitalityPoint);
+	WriteInstructionCall(0x89EE61, (UINT32)CUser::_AddVitalityPoint);
+	WriteInstructionCall(0x8A191F, (UINT32)CUser::_AddVitalityPoint);
+	WriteInstructionCall(0x8CFE24, (UINT32)CUser::_AddVitalityPoint);
 }

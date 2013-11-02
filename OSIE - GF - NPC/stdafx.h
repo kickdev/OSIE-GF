@@ -28,6 +28,7 @@
 #include "OSIEGFN.h"
 
 #include "CLog.h"
+#include "SharedCreatureData.h"
 
 //#include "Resource.h"
 

@@ -321,6 +321,8 @@ void L2GFExtL2MFix()
 
 void OSIEFix()
 {
+	CSharedCreatureData::ExtendCreatureSharedData(); //change size shared data
+
 	WriteMemoryQWORD(0xC54400, (UINT64)CUser::_UserEnterWorld); //
 	WriteInstructionCall(0x5E1B30, (UINT32)CUserSocket::_BindUser); // Kill kamael race
 
@@ -341,6 +343,8 @@ void OSIEFix()
 	CUser::ShowHTMLInitialize();
 
 	WriteMemoryQWORD(0xC54128, (UINT64)CUser::_ExpInc); //Fix exp to 80lvl
+	
+	CUser::VitalityPointInitialize(); //delete vitality point
 }
 
 void DllInitializer(HMODULE hDllModule, DWORD ul_reason_for_call)

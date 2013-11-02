@@ -120,18 +120,18 @@ public:
 	static void __cdecl _ShowHTML(CUser* pUser, const wchar_t* HTML_NAME, const wchar_t* HTML_TEXT, unsigned int uClassID);
 	static void __cdecl ShowHTMLInitialize();
 	static __int64 __cdecl _ExpInc(CUser* pUser, __int64 exp, bool bVar);
+	static void __cdecl _SetVitalityPoint(CUser* pUser, int nPoint, bool bVar);
+	static void __cdecl _AddVitalityPoint(CUser* pUser, int nPoint, int nHowToGetPointType, bool bVar);
+	static void __cdecl VitalityPointInitialize();
 
 	bool __thiscall IsNowTrade();
-
 	CTrade* __thiscall GetTrade();
-
 	void __thiscall EnterWorld();
-
 	void __thiscall Say(wchar_t* msg);
-
 	void __thiscall ShowHTML(const wchar_t* HTML_NAME, const wchar_t* HTML_TEXT, unsigned int uClassID);
-
 	__int64 __thiscall ExpInc(__int64 exp, bool bVar);
+	void __thiscall SetVitalityPoint(int nPoint, bool bVar);
+	void __thiscall AddVitalityPoint(int nPoint, int nHowToGetPointType, bool bVar);
 
 	/* 1CB0 */ unsigned int _uUnkVal1CB0[1389];
 	/* 3264 */ CYieldLock html_cs;
@@ -143,11 +143,11 @@ public:
 	/* 3278 */ unsigned char _padding3278[VS2005_RELEASE_VECTOR_SIZE];
 #endif //IS_VS2005_RELEASE 
 	/* 3298 */ unsigned int _uUnkVal3298[50]; 
+	/* 3358 */ CUserSocket* pUserSocket;
 	/* 3360 */ UINT32 uTradeSID;
 	/* 3364 */ unsigned int _uUnkVal3364[427];
 	/* 3A10 */ CUserExt UserExt;
-	/* 3A18 */ CUserSocket* pUserSocket;
-	/* 3A20 */
+	/* 3A18 */ 
 };
 
 #pragma pack(pop)
